@@ -1,0 +1,59 @@
+$backgroundColor: #f2e9e1;
+@mixin flexibility($direction, $align, $justify){
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+.App {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+  width: 100vw;
+  height: 100vh;
+  background-color: $backgroundColor;
+}
+
+#Landing{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: start;
+  align-items: center;
+h1{
+  font-size: 80px;
+  margin-bottom: 10px;
+}
+div{
+  margin-top: 50px;
+  width: 25vw;
+  height: 50vh;
+  .clock{
+    position: fixed;
+    width: auto;
+    height: 50vh;
+    z-index: 1;
+    transition: 1s;
+  }
+  .pomoCat{
+    position: static;
+    transform: rotate(135deg);
+    z-index: 0;
+    height: 50vh;
+    width: auto;
+    transition: 1s;
+  }
+}
+div:hover{
+  .clock{
+    transform: scale(1.1);
+  }
+  .pomoCat{
+    transform: scale(0.80) rotate(135deg);
+    margin-top: 13em;
+    margin-left: 14em;
+  }
+}
+}
