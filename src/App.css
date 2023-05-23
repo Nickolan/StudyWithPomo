@@ -44,6 +44,58 @@
 }
 #Landing div:hover .pomoCat {
   transform: scale(0.8) rotate(135deg);
-  margin-top: 13em;
-  margin-left: 14em;
+  margin: 13em 0 0 14em;
+}
+
+@media (max-width: 720px) {
+  #Landing {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: start;
+    align-items: center;
+  }
+  #Landing h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  #Landing div {
+    width: 25vw;
+    height: 50vh;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+  }
+  #Landing div .clock {
+    position: absolute;
+    top: 180px;
+    right: 20px;
+    z-index: 1;
+    transition: 1s;
+  }
+  #Landing div .pomoCat {
+    position: absolute;
+    top: 180px;
+    right: 45px;
+    z-index: 0;
+    height: 40vh;
+    width: auto;
+    transition: 1s;
+    transform: rotate(0deg);
+  }
+  #Landing div:active .clock {
+    transform: scale(0.9);
+  }
+  #Landing div:active .pomoCat {
+    transform: scale(1);
+    margin: 0 0 10em 0;
+    top: 50px;
+  }
+  #Landing div:hover .clock {
+    transform: scale(1);
+  }
+  #Landing div:hover .pomoCat {
+    transform: scale(1) rotate(0deg);
+    margin: 0 0 0 0;
+  }
 }/*# sourceMappingURL=App.css.map */

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { twenty_five, fifty } from "../redux/action";
 import { useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
+import { handle25Change, handle50change } from "../controllers/controllers";
 
 function Home() {
     const dispatch = useDispatch();
@@ -13,21 +14,18 @@ function Home() {
         } else {
             dispatch(fifty());
         }
+        
     }, [is25Checked])
 
-    function handleCheckboxChange() {
-        set25Checked(!is25Checked);
-        set50Checked(!is50Checked);
-      }
 
     return(
         <div id="Home">
             <div className="config-Timer-content">
 
-                <input type="checkbox" checked={is25Checked} onChange={handleCheckboxChange} name="25/5"/>
+                <input type="radio" checked={is25Checked} onChange={() => handle25Change({is25Checked, is50Checked, set25Checked, set50Checked})} name="25/5"/>
                 <label htmlFor="25/5">25/5</label>
 
-                <input checked={is50Checked} onChange={handleCheckboxChange} type="checkbox" name="50/10"/>
+                <input checked={is50Checked} onChange={() => handle50change({is25Checked, is50Checked, set25Checked, set50Checked})} type="radio" name="50/10"/>
                 <label htmlFor="50/10">50/10</label>
 
             </div>

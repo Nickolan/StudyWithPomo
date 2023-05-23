@@ -1,28 +1,41 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { formatTimer } from "../controllers/controllers";
 
 
 function Timer() {
 
   const {workTimer, breakTimer} = useSelector((state : any) => state)
   
-
+  const [timer, setTimer] = useState(true)
   const [seconds, setSeconds] = useState(workTimer);
   const [active, setActive] = useState(true);
 
+  useEffect(() => {
+    if (seconds < 0) {
+      setTimer(!timer);
+    }
+}, [seconds])
 
   useEffect(() => {
     let interval : any;
     
     if (active) {
+      if (timer) {
+        setSeconds(workTimer);
+      } else {
+        setSeconds(breakTimer);
+      }
       interval = setInterval(() => {
         setSeconds((prevSeconds : number) => prevSeconds - 1);
       }, 1000)
     }
     
     return () => clearInterval(interval)
-  }, [active]);
+  }, [active, timer]);
 
+  
+  
   const startTimer = () => {
     setActive(true);
   };
@@ -32,18 +45,7 @@ function Timer() {
   };
     
   const resetTimer = () => {
-    setSeconds(1500)
-    setActive(false);
-  };
-
-  const formatTimer = (totalSeconds : number) => {
-    const minutes : number = Math.floor(totalSeconds / 60);
-    const seconds : number = totalSeconds % 60;
-
-    const formattedMinutes : string = String(minutes).padStart(2, '0');
-    const formattedSeconds : string = String(seconds).padStart(2, '0');
-
-    return `${formattedMinutes} : ${formattedSeconds}`;
+    setTimer(!timer);
   };
   return(
     <div id="timer">
