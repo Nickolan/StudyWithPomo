@@ -1,6 +1,9 @@
 const initialState : object = {
     workTimer: 0,
     breakTimer: 0,
+    sessionsTimer: 0,
+    background: '#fff',
+    text: '#fff'
 }
 
 function rootReducer (state = initialState, action : any) {
@@ -16,6 +19,32 @@ function rootReducer (state = initialState, action : any) {
                 ...state,
                 workTimer: 3000,
                 breakTimer: 600,
+            }
+        case 'oneSession':
+            return{
+                ...state,
+                sessionsTimer: 1
+            }
+        case 'twoSession':
+            return{
+                ...state,
+                sessionsTimer: 2
+            }
+        case 'fourSession':
+            return{
+                ...state,
+                sessionsTimer: 4
+            }
+        case 'eightSession':
+            return{
+                ...state,
+                sessionsTimer: 8
+            }
+        case 'selectColor':
+            return{
+                ...state,
+                background: action.payload.bgcolor,
+                text: action.payload.textColor
             }
         default:
             return{

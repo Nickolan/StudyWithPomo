@@ -21,5 +21,6 @@ export const formatTimer = (totalSeconds : number) => {
     const formattedSeconds : string = String(seconds).padStart(2, '0');
 
     return `${formattedMinutes} : ${formattedSeconds}`;
-  };
+};
+
 
