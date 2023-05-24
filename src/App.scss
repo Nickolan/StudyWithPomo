@@ -1,9 +1,37 @@
-$backgroundColor: #f2e9e1;
+$firstColor: #f2e9e1;
+$blue: #58a9ff;
+$white: #f2f2f2;
+$secondary: #a9d6ec;
 @mixin flexibility($direction, $align, $justify){
   display: flex;
   flex-direction: $direction;
   align-items: $align;
   justify-content: $justify;
+}
+@mixin button{
+  background-color: $blue;
+  border-radius: 25% 25% 25% 25%;
+  border: none;
+  color: $white;
+  height: 40px;
+  font-size: 20px;
+  transition: 0.5s;
+}
+@mixin active-button{
+  background-color: $blue;
+  border: 0.8px solid $white;
+  color: $white;
+  border-radius: 35%;
+  font-size: 20px;  
+  transform: scale(1.15);
+  transition: 0.5s;
+}
+@mixin sections($width){
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: $width;
+  height: auto;
 }
 
 .App {
@@ -16,7 +44,7 @@ $backgroundColor: #f2e9e1;
 }
 
 #Landing{
-  background-color: $backgroundColor;
+  background-color: $firstColor;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -59,29 +87,74 @@ div:hover{
 }
 
 #Home{
-  background-color: $backgroundColor;
+  background-color: $firstColor;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  .config-Timer-background{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    #color{
-      margin-right: 10px;
-      width: 30px;
-      height: 30px;
-      border: 1px solid #000;
-      border-radius: 50%;
+    align-items: center;
+  .container-home{
+    background-color: $secondary;
+    border: 1px solid $blue;
+    width: 35%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .config-Timer-time{
+      @include sections(50%);
+      #time{
+        @include button()
+      }
+      #time:hover{
+        cursor: pointer;
+        transform: scale(1.18)
+      }
+      #time-active{
+        @include active-button()
+      }
     }
-    #color:hover{
-      cursor: pointer;
-    }
-    #color:active{
-      border: 1px solid #fff;
-    }
-    .default{
-      background-color: $backgroundColor;
+    .config-Timer-sessions{
+      @include sections(100%);
+        #sessions{
+          @include button();
+        }
+        #sessions:hover{
+          cursor: pointer;
+          transform: scale(1.18)
+        }
+        #sessions-active{
+          @include active-button()
+        }
+    };
+
+    .config-Timer-background{
+      @include sections(60%);
+      #color{
+        margin-right: 10px;
+        width: 48px;
+        height: 48px;
+        border: 1px solid #000;
+        border-radius: 50%;
+        transition: 0.5s;
+      }
+      #color:hover{
+        cursor: pointer;
+        transform: scale(1.05)
+      }
+      #color-active{
+        border: 2px solid #00c3ff;
+        margin-right: 10px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        transform: scale(1.1);
+        transition: 1s;
+      }
+      .default{
+      background-color: $firstColor;
     }
     .grey{
       background-color: #4d4d4d;
@@ -98,13 +171,18 @@ div:hover{
     .dark{
       background-color: #191818;
     }
-  }
+    }
+    
+}
 }
 #Timer{
   width: 100vw;
   height: 100%;
-  .time{
+  @include flexibility(column, center, start);
+  h1{
     font-size: 300px;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 8px $white;
   }
 }
 

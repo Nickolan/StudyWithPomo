@@ -1,9 +1,9 @@
 const initialState : object = {
-    workTimer: 0,
-    breakTimer: 0,
-    sessionsTimer: 0,
-    background: '#fff',
-    text: '#fff'
+    workTimer: 1500,
+    breakTimer: 300,
+    sessionsTimer: 1,
+    background: '#f2e9e1',
+    text: '#4685ff'
 }
 
 function rootReducer (state = initialState, action : any) {

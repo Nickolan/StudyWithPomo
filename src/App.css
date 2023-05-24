@@ -54,49 +54,136 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-}
-#Home .config-Timer-background {
-  display: flex;
   justify-content: center;
+  align-items: center;
 }
-#Home .config-Timer-background #color {
+#Home .container-home {
+  background-color: #a9d6ec;
+  border: 1px solid #58a9ff;
+  width: 35%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#Home .container-home .config-Timer-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+  height: auto;
+}
+#Home .container-home .config-Timer-time #time {
+  background-color: #58a9ff;
+  border-radius: 25% 25% 25% 25%;
+  border: none;
+  color: #f2f2f2;
+  height: 40px;
+  font-size: 20px;
+  transition: 0.5s;
+}
+#Home .container-home .config-Timer-time #time:hover {
+  cursor: pointer;
+  transform: scale(1.18);
+}
+#Home .container-home .config-Timer-time #time-active {
+  background-color: #58a9ff;
+  border: 0.8px solid #f2f2f2;
+  color: #f2f2f2;
+  border-radius: 35%;
+  font-size: 20px;
+  transform: scale(1.15);
+  transition: 0.5s;
+}
+#Home .container-home .config-Timer-sessions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  height: auto;
+}
+#Home .container-home .config-Timer-sessions #sessions {
+  background-color: #58a9ff;
+  border-radius: 25% 25% 25% 25%;
+  border: none;
+  color: #f2f2f2;
+  height: 40px;
+  font-size: 20px;
+  transition: 0.5s;
+}
+#Home .container-home .config-Timer-sessions #sessions:hover {
+  cursor: pointer;
+  transform: scale(1.18);
+}
+#Home .container-home .config-Timer-sessions #sessions-active {
+  background-color: #58a9ff;
+  border: 0.8px solid #f2f2f2;
+  color: #f2f2f2;
+  border-radius: 35%;
+  font-size: 20px;
+  transform: scale(1.15);
+  transition: 0.5s;
+}
+#Home .container-home .config-Timer-background {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 60%;
+  height: auto;
+}
+#Home .container-home .config-Timer-background #color {
   margin-right: 10px;
-  width: 30px;
-  height: 30px;
+  width: 48px;
+  height: 48px;
   border: 1px solid #000;
   border-radius: 50%;
+  transition: 0.5s;
 }
-#Home .config-Timer-background #color:hover {
+#Home .container-home .config-Timer-background #color:hover {
   cursor: pointer;
+  transform: scale(1.05);
 }
-#Home .config-Timer-background #color:active {
-  border: 1px solid #fff;
+#Home .container-home .config-Timer-background #color-active {
+  border: 2px solid #00c3ff;
+  margin-right: 10px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  transform: scale(1.1);
+  transition: 1s;
 }
-#Home .config-Timer-background .default {
+#Home .container-home .config-Timer-background .default {
   background-color: #f2e9e1;
 }
-#Home .config-Timer-background .grey {
+#Home .container-home .config-Timer-background .grey {
   background-color: #4d4d4d;
 }
-#Home .config-Timer-background .green {
+#Home .container-home .config-Timer-background .green {
   background-color: #18741f;
 }
-#Home .config-Timer-background .blue {
+#Home .container-home .config-Timer-background .blue {
   background-color: #080064;
 }
-#Home .config-Timer-background .violet {
+#Home .container-home .config-Timer-background .violet {
   background-color: #330b56;
 }
-#Home .config-Timer-background .dark {
+#Home .container-home .config-Timer-background .dark {
   background-color: #191818;
 }
 
 #Timer {
   width: 100vw;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
 }
-#Timer .time {
+#Timer h1 {
   font-size: 300px;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke: 8px #f2f2f2;
 }
 
 @media (max-width: 720px) {

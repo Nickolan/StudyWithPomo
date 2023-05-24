@@ -9,6 +9,11 @@ function Home() {
     const {workTimer, breakTimer, sessionsTimer} = useSelector((state : any) => state)
     const [is25Checked, set25Checked] = useState(true);
     const [is50Checked, set50Checked] = useState(false);
+    const [options, setOptions] = useState({
+        color: 'default',
+        timer: '25/5',
+        sessions: '1'
+    });
 
     useEffect(() => {
         if (is25Checked) {
@@ -19,33 +24,36 @@ function Home() {
         
     }, [is25Checked, sessionsTimer])
 
+
+
     return(
         <div id="Home">
-            <div className="config-Timer-content">
-                <input type="radio" checked={is25Checked} onChange={() => handle25Change({is25Checked, is50Checked, set25Checked, set50Checked})} name="25/5"/>
-                <label htmlFor="25/5">25/5</label>
-                <input checked={is50Checked} onChange={() => handle50change({is25Checked, is50Checked, set25Checked, set50Checked})} type="radio" name="50/10"/>
-                <label htmlFor="50/10">50/10</label>
+            <div className="container-home">
+                <div className="config-Timer-time">
+                    <input id={options.timer !== '25/5' ? 'time' : 'time-active'} type="button" value='25/5' onClick={() => {handle25Change({is25Checked, is50Checked, set25Checked, set50Checked}); setOptions({...options, timer: '25/5'})}} />
+                    
+                    <input id={options.timer !== '50/10' ? 'time' : 'time-active'} onClick={() => {handle50change({is25Checked, is50Checked, set25Checked, set50Checked}); setOptions({...options, timer: '50/10'})}} type="button" value='50/10' />
+                </div>
+                <div className="config-Timer-sessions">
+                    <input id={options.sessions !== '1' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(oneSession()); setOptions({...options, sessions: '1'})}}  value='1 Session' type="button"/>
+                    <input id={options.sessions !== '2' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(twoSession()); setOptions({...options, sessions: '2'})}}  value='2 Session' type="button"/>
+                    <input id={options.sessions !== '4' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(fourSession()); setOptions({...options, sessions: '4'})}} value='4 Session' type="button"/>
+                    <input id={options.sessions !== '8' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(eightSession()); setOptions({...options, sessions: '8'})}} value='8 Session' type="button"/>
+                </div>
+                <div className="config-Timer-background">
+                    <div id={options.color !== 'default' ? "color" : "color-active"} onClick={() => {dispatch(selectColor('#f2e9e1', '#000')); setOptions({...options, color: 'default'})}} className="default"></div>
+                    <div id={options.color !== 'grey' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#4d4d4d', '#000')); setOptions({...options, color: 'grey'})}} className="grey"></div>
+                    <div id={options.color !== 'green' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#18741f', '#000')); setOptions({...options, color: 'green'})}} className="green"></div>
+                    <div id={options.color !== 'blue' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#080064', '#000')); setOptions({...options, color: 'blue'})}} className="blue"></div>
+                    <div id={options.color !== 'violet' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#330b56', '#000')); setOptions({...options, color: 'violet'})}} className="violet"></div>
+                    <div id={options.color !== 'dark' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#191818', '#000')); setOptions({...options, color: 'dark'})}} className="dark"></div>
+                </div>
+                <div>
+                </div>
+                <Link to={`/timer`}>
+                    <button disabled={sessionsTimer === 0}>Start</button>            
+                </Link>
             </div>
-            <div className="config-Timer-sessions">
-                <label htmlFor="oneSessions"><input onChange={() => dispatch(oneSession())} checked={sessionsTimer === 'oneSession'} type="radio"/>1 Session</label>
-                <label htmlFor="twoSessions"><input onChange={() => dispatch(twoSession())} checked={sessionsTimer === 'twoSession'} type="radio"/>2 Session</label>
-                <label htmlFor="fourSessions"><input onChange={() => dispatch(fourSession())} checked={sessionsTimer === 'fourSession'}  type="radio"/>4 Session</label>
-                <label htmlFor="eightSessions"><input onChange={() => dispatch(eightSession())} checked={sessionsTimer === 'eightSession'}  type="radio"/>8 Session</label>
-            </div>
-            <div className="config-Timer-background">
-                <div id="color" onClick={() => dispatch(selectColor('#f2e9e1', '#000'))} className="default"></div>
-                <div id="color" onClick={() => dispatch(selectColor('#4d4d4d', '#fff'))} className="grey"></div>
-                <div id="color" onClick={() => dispatch(selectColor('#18741f', '#000'))} className="green"></div>
-                <div id="color" onClick={() => dispatch(selectColor('#080064', '#fff'))} className="blue"></div>
-                <div id="color" onClick={() => dispatch(selectColor('#330b56', '#fff'))} className="violet"></div>
-                <div id="color" onClick={() => dispatch(selectColor('#191818', '#fff'))} className="dark"></div>
-            </div>
-            <div>
-            </div>
-            <Link to={`/timer`}>
-                <button>Start</button>            
-            </Link>
         </div>
     )
 }
