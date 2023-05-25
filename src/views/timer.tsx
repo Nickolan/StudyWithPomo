@@ -1,21 +1,17 @@
 import {useState, useEffect} from "react";
 import {  useSelector } from "react-redux";
 import { formatTimer } from "../controllers/controllers";
-import { useNavigate } from "react-router-dom";
-
 
 function Timer() {
 
-  const {workTimer, breakTimer, sessionsTimer, background, text} = useSelector((state : any) => state)
-  const navigate = useNavigate();
-  const divStyle = {
-    backgroundColor: background,
-  };
-  
+  const {workTimer, breakTimer, sessionsTimer} = useSelector((state : any) => state)
   const [timer, setTimer] = useState(true)
   const [seconds, setSeconds] = useState(workTimer);
   const [active, setActive] = useState(true);
   const [leftSessions, setLeftSession] = useState(sessionsTimer);
+  // let divStyle = {
+  //   background: `linear-gradient(${primaryColor} 50%, ${secundaryColor})`
+  // }
 
   useEffect(() => {
     if (seconds < 0) {
@@ -62,14 +58,14 @@ function Timer() {
   };
 
   return(
-    <div style={divStyle} id="Timer">
-      <div>
+    <div id="Timer">
+      <div className="timer-status">
+        <div className="buttons-timer">
         <button onClick={startTimer}>Start</button><button onClick={stopTimer}>Stop</button>
-        <h2 style={{ color: text }}>{leftSessions}</h2>
+        </div>
+        <h2 >{leftSessions}</h2>
       </div>
-      <div>
-        <h1 style={{ color: text }} className="time">{formatTimer(seconds)}</h1>
-      </div>
+        <h1 className="time">{formatTimer(seconds)}</h1>
     </div>
   )
 }

@@ -1,7 +1,7 @@
-$firstColor: #f2e9e1;
+$firstColor: #a9d6ec;
 $blue: #58a9ff;
 $white: #f2f2f2;
-$secondary: #a9d6ec;
+$secondary: #ffffff;
 @mixin flexibility($direction, $align, $justify){
   display: flex;
   flex-direction: $direction;
@@ -13,24 +13,25 @@ $secondary: #a9d6ec;
   border-radius: 25% 25% 25% 25%;
   border: none;
   color: $white;
-  height: 40px;
+  height: 45px;
   font-size: 20px;
   transition: 0.5s;
 }
 @mixin active-button{
   background-color: $blue;
-  border: 0.8px solid $white;
+  border: 0.8px solid black;
   color: $white;
-  border-radius: 35%;
+  border-radius: 25% 25% 25% 25%;
+  height: 45px;
   font-size: 20px;  
   transform: scale(1.15);
   transition: 0.5s;
 }
-@mixin sections($width){
+@mixin sections(){
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: $width;
+  width: auto;
   height: auto;
 }
 
@@ -44,7 +45,7 @@ $secondary: #a9d6ec;
 }
 
 #Landing{
-  background-color: $firstColor;
+  // background: linear-gradient($firstColor 70%, #278efc);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -52,6 +53,7 @@ $secondary: #a9d6ec;
   justify-content: start;
   align-items: center;
 h1{
+  font-family: Playfair Display;
   font-size: 80px;
   margin-bottom: 10px;
 }
@@ -87,29 +89,40 @@ div:hover{
 }
 
 #Home{
-  background-color: $firstColor;
+  // background: linear-gradient($firstColor 70%, #278efc);
   width: 100vw;
   height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
+  .result-home{
+    background-color: $secondary;
+    border: 3px solid #000;
+    width: 30%;
+    height: 80%;
+  }
   .container-home{
     background-color: $secondary;
-    border: 1px solid $blue;
-    width: 35%;
+    border: 3px solid #000;
+    width: 30%;
     height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    .config-Timer-time{
-      @include sections(50%);
-      #time{
-        @include button()
-      }
-      #time:hover{
-        cursor: pointer;
+    #divisores{
+      border: #000 solid 2px;
+      @include flexibility(column, space-around, start);
+      width: 80%;
+      .config-Timer-time{
+        
+        @include sections();
+        #time{
+          @include button()
+        }
+        #time:hover{
+          cursor: pointer;
         transform: scale(1.18)
       }
       #time-active{
@@ -117,21 +130,21 @@ div:hover{
       }
     }
     .config-Timer-sessions{
-      @include sections(100%);
-        #sessions{
-          @include button();
-        }
-        #sessions:hover{
-          cursor: pointer;
+      @include sections();
+      #sessions{
+        @include button();
+      }
+      #sessions:hover{
+        cursor: pointer;
           transform: scale(1.18)
         }
         #sessions-active{
           @include active-button()
         }
-    };
-
+      };
+      
     .config-Timer-background{
-      @include sections(60%);
+      @include sections();
       #color{
         margin-right: 10px;
         width: 48px;
@@ -145,13 +158,12 @@ div:hover{
         transform: scale(1.05)
       }
       #color-active{
-        border: 2px solid #00c3ff;
+        border: 3px solid #00c3ff;
         margin-right: 10px;
         width: 48px;
         height: 48px;
         border-radius: 50%;
         transform: scale(1.1);
-        transition: 1s;
       }
       .default{
       background-color: $firstColor;
@@ -160,7 +172,7 @@ div:hover{
       background-color: #4d4d4d;
     }
     .green{
-      background-color: #18741f;
+      background-color: #1a9825;
     }
     .blue{
       background-color: #080064;
@@ -171,18 +183,50 @@ div:hover{
     .dark{
       background-color: #191818;
     }
-    }
-    
+  }
 }
-}
+  
+  .btn-start{
+    background-color: $blue;
+    color: $white;
+    width: 100px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 20%;
+    transition: 1s;
+  }
+  .btn-start:hover{
+    cursor: pointer;
+  }
+  .btn-start-disabled{
+    background-color: #a9d6ec;
+    color: $secondary;
+    width: 100px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 20%;
+  }
+}};
+
+
 #Timer{
   width: 100vw;
   height: 100%;
   @include flexibility(column, center, start);
+  .timer-status{
+    flex-direction: row;
+    display: flex;   
+  }
   h1{
+    border: solid 1px #000;
     font-size: 300px;
     -webkit-text-fill-color: black;
     -webkit-text-stroke: 8px $white;
+  }
+  h2{
+    font-size: 50px;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 1px $white;
   }
 }
 

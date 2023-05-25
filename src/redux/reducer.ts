@@ -2,8 +2,9 @@ const initialState : object = {
     workTimer: 1500,
     breakTimer: 300,
     sessionsTimer: 1,
-    background: '#f2e9e1',
-    text: '#4685ff'
+    sectionDay: '',
+    primaryColor: '',
+    secundaryColor: ''
 }
 
 function rootReducer (state = initialState, action : any) {
@@ -40,11 +41,12 @@ function rootReducer (state = initialState, action : any) {
                 ...state,
                 sessionsTimer: 8
             }
-        case 'selectColor':
+        case 'DAYHOUR':
             return{
                 ...state,
-                background: action.payload.bgcolor,
-                text: action.payload.textColor
+                sectionDay: action.payload.moment, 
+                primaryColor: action.payload.primary,
+                secundaryColor: action.payload.secundary
             }
         default:
             return{
