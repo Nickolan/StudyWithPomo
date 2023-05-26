@@ -8,6 +8,7 @@
 }
 
 #Landing {
+  color: #22214e;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -17,8 +18,11 @@
 }
 #Landing h1 {
   font-family: Playfair Display;
-  font-size: 80px;
+  font-size: 100px;
+  margin-top: 30px;
   margin-bottom: 10px;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke: 1px #f2f2f2;
 }
 #Landing div {
   margin-top: 50px;
@@ -56,15 +60,10 @@
   justify-content: space-around;
   align-items: center;
 }
-#Home .result-home {
+#Home .container-home, #Home .result-home {
+  border: #000 solid 2px;
   background-color: #ffffff;
-  border: 3px solid #000;
-  width: 30%;
-  height: 80%;
-}
-#Home .container-home {
-  background-color: #ffffff;
-  border: 3px solid #000;
+  border-radius: 5%;
   width: 30%;
   height: 80%;
   display: flex;
@@ -72,22 +71,25 @@
   justify-content: space-around;
   align-items: center;
 }
-#Home .container-home #divisores {
-  border: #000 solid 2px;
+#Home .container-home .demo, #Home .result-home .demo {
+  width: 300px;
+  height: 150px;
+}
+#Home .container-home #divisores, #Home .result-home #divisores {
   display: flex;
   flex-direction: column;
   align-items: space-around;
   justify-content: start;
   width: 80%;
 }
-#Home .container-home #divisores .config-Timer-time {
+#Home .container-home #divisores .config-Timer-time, #Home .result-home #divisores .config-Timer-time {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: auto;
   height: auto;
 }
-#Home .container-home #divisores .config-Timer-time #time {
+#Home .container-home #divisores .config-Timer-time #time, #Home .result-home #divisores .config-Timer-time #time {
   background-color: #58a9ff;
   border-radius: 25% 25% 25% 25%;
   border: none;
@@ -96,11 +98,11 @@
   font-size: 20px;
   transition: 0.5s;
 }
-#Home .container-home #divisores .config-Timer-time #time:hover {
+#Home .container-home #divisores .config-Timer-time #time:hover, #Home .result-home #divisores .config-Timer-time #time:hover {
   cursor: pointer;
   transform: scale(1.18);
 }
-#Home .container-home #divisores .config-Timer-time #time-active {
+#Home .container-home #divisores .config-Timer-time #time-active, #Home .result-home #divisores .config-Timer-time #time-active {
   background-color: #58a9ff;
   border: 0.8px solid black;
   color: #f2f2f2;
@@ -110,14 +112,14 @@
   transform: scale(1.15);
   transition: 0.5s;
 }
-#Home .container-home #divisores .config-Timer-sessions {
+#Home .container-home #divisores .config-Timer-sessions, #Home .result-home #divisores .config-Timer-sessions {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: auto;
   height: auto;
 }
-#Home .container-home #divisores .config-Timer-sessions #sessions {
+#Home .container-home #divisores .config-Timer-sessions #sessions, #Home .result-home #divisores .config-Timer-sessions #sessions {
   background-color: #58a9ff;
   border-radius: 25% 25% 25% 25%;
   border: none;
@@ -126,11 +128,11 @@
   font-size: 20px;
   transition: 0.5s;
 }
-#Home .container-home #divisores .config-Timer-sessions #sessions:hover {
+#Home .container-home #divisores .config-Timer-sessions #sessions:hover, #Home .result-home #divisores .config-Timer-sessions #sessions:hover {
   cursor: pointer;
   transform: scale(1.18);
 }
-#Home .container-home #divisores .config-Timer-sessions #sessions-active {
+#Home .container-home #divisores .config-Timer-sessions #sessions-active, #Home .result-home #divisores .config-Timer-sessions #sessions-active {
   background-color: #58a9ff;
   border: 0.8px solid black;
   color: #f2f2f2;
@@ -140,14 +142,14 @@
   transform: scale(1.15);
   transition: 0.5s;
 }
-#Home .container-home #divisores .config-Timer-background {
+#Home .container-home #divisores .config-Timer-background, #Home .result-home #divisores .config-Timer-background {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: auto;
   height: auto;
 }
-#Home .container-home #divisores .config-Timer-background #color {
+#Home .container-home #divisores .config-Timer-background #color, #Home .result-home #divisores .config-Timer-background #color {
   margin-right: 10px;
   width: 48px;
   height: 48px;
@@ -155,11 +157,11 @@
   border-radius: 50%;
   transition: 0.5s;
 }
-#Home .container-home #divisores .config-Timer-background #color:hover {
+#Home .container-home #divisores .config-Timer-background #color:hover, #Home .result-home #divisores .config-Timer-background #color:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
-#Home .container-home #divisores .config-Timer-background #color-active {
+#Home .container-home #divisores .config-Timer-background #color-active, #Home .result-home #divisores .config-Timer-background #color-active {
   border: 3px solid #00c3ff;
   margin-right: 10px;
   width: 48px;
@@ -167,25 +169,25 @@
   border-radius: 50%;
   transform: scale(1.1);
 }
-#Home .container-home #divisores .config-Timer-background .default {
+#Home .container-home #divisores .config-Timer-background .default, #Home .result-home #divisores .config-Timer-background .default {
   background-color: #a9d6ec;
 }
-#Home .container-home #divisores .config-Timer-background .grey {
+#Home .container-home #divisores .config-Timer-background .grey, #Home .result-home #divisores .config-Timer-background .grey {
   background-color: #4d4d4d;
 }
-#Home .container-home #divisores .config-Timer-background .green {
+#Home .container-home #divisores .config-Timer-background .green, #Home .result-home #divisores .config-Timer-background .green {
   background-color: #1a9825;
 }
-#Home .container-home #divisores .config-Timer-background .blue {
+#Home .container-home #divisores .config-Timer-background .blue, #Home .result-home #divisores .config-Timer-background .blue {
   background-color: #080064;
 }
-#Home .container-home #divisores .config-Timer-background .violet {
+#Home .container-home #divisores .config-Timer-background .violet, #Home .result-home #divisores .config-Timer-background .violet {
   background-color: #330b56;
 }
-#Home .container-home #divisores .config-Timer-background .dark {
+#Home .container-home #divisores .config-Timer-background .dark, #Home .result-home #divisores .config-Timer-background .dark {
   background-color: #191818;
 }
-#Home .container-home .btn-start {
+#Home .container-home .btn-start, #Home .result-home .btn-start {
   background-color: #58a9ff;
   color: #f2f2f2;
   width: 100px;
@@ -194,10 +196,10 @@
   border-radius: 20%;
   transition: 1s;
 }
-#Home .container-home .btn-start:hover {
+#Home .container-home .btn-start:hover, #Home .result-home .btn-start:hover {
   cursor: pointer;
 }
-#Home .container-home .btn-start-disabled {
+#Home .container-home .btn-start-disabled, #Home .result-home .btn-start-disabled {
   background-color: #a9d6ec;
   color: #ffffff;
   width: 100px;
@@ -215,19 +217,31 @@
   justify-content: start;
 }
 #Timer .timer-status {
-  flex-direction: row;
-  display: flex;
-}
-#Timer h1 {
   border: solid 1px #000;
-  font-size: 300px;
-  -webkit-text-fill-color: black;
-  -webkit-text-stroke: 8px #f2f2f2;
+  flex-direction: column;
+  display: flex;
+  margin-top: 30px;
 }
-#Timer h2 {
+#Timer .timer-status h2 {
   font-size: 50px;
   -webkit-text-fill-color: black;
   -webkit-text-stroke: 1px #f2f2f2;
+}
+#Timer .timer-status img {
+  width: 200px;
+  transition: 0.3s;
+}
+#Timer .timer-status img:hover {
+  cursor: pointer;
+}
+#Timer .timer-status img:active {
+  transform: scale(0.8);
+}
+#Timer h1 {
+  font-size: 390px;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke: 8px #f2f2f2;
+  margin: 5px 0 0 0;
 }
 
 @media (max-width: 720px) {

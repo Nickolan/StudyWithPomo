@@ -25,12 +25,16 @@ export const eightSession = () => {
 export const dayHour = () => {
     let date = new Date();
     let hour = date.getHours()
-    if (hour >= 8 && hour < 13) {
-        return { type: 'DAYHOUR', payload: {moment: 'morning', primary:'#a9d6ec', secundary: '#278efc'} };
-    } else if (hour >= 13 && hour < 17) {
-        return { type: 'DAYHOUR', payload: {moment: 'noon', primary:'#a9d6ec', secundary: '#278efc'} };
-    }  else if(hour >= 17 && hour < 21){
-        return { type: 'DAYHOUR', payload: {moment: 'afternoon', primary:'#a9d6ec', secundary: '#278efc'} };
-    } else return { type: 'DAYHOUR', payload: {moment: 'night', primary:'#a9d6ec', secundary: '#278efc'} };
+    if (hour >= 1 && hour < 8) {
+        return {type: 'DAYHOUR', payload: {moment: 'night', primary:'#1a1a28', secundary: '#22214e'}};
+    } else if (hour >= 8 && hour < 13) {
+        return {type: 'DAYHOUR', payload: {moment: 'morning', primary:'#9bdeff', secundary: '#3ad695'}};
+    }  else if(hour >= 13 && hour < 17){
+        return {type: 'DAYHOUR', payload: {moment: 'noon', primary:'#b6e6fe', secundary: '#27aafc'}};
+    } else if (hour >= 17 && hour < 21) {
+        return {type: 'DAYHOUR', payload: {moment: 'afternoon', primary:'#fabb21', secundary: '#7a2d59'}};
+    } else {
+        return {type: 'DAYHOUR', payload: {moment: 'prevnight', primary:'#201f41', secundary: '#9531c4'}};
+    }
 };
 

@@ -46,6 +46,7 @@ $secondary: #ffffff;
 
 #Landing{
   // background: linear-gradient($firstColor 70%, #278efc);
+  color: #22214e;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -54,8 +55,11 @@ $secondary: #ffffff;
   align-items: center;
 h1{
   font-family: Playfair Display;
-  font-size: 80px;
+  font-size: 100px;
+  margin-top: 30px;
   margin-bottom: 10px;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke: 1px $white;
 }
 div{
   margin-top: 50px;
@@ -96,23 +100,21 @@ div:hover{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-  .result-home{
+  .container-home, .result-home{
+    border: #000 solid 2px;
     background-color: $secondary;
-    border: 3px solid #000;
-    width: 30%;
-    height: 80%;
-  }
-  .container-home{
-    background-color: $secondary;
-    border: 3px solid #000;
+    border-radius: 5%;
     width: 30%;
     height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    .demo{
+      width: 300px;
+      height: 150px;
+    }
     #divisores{
-      border: #000 solid 2px;
       @include flexibility(column, space-around, start);
       width: 80%;
       .config-Timer-time{
@@ -206,7 +208,9 @@ div:hover{
     font-size: 25px;
     border-radius: 20%;
   }
-}};
+}
+
+};
 
 
 #Timer{
@@ -214,19 +218,31 @@ div:hover{
   height: 100%;
   @include flexibility(column, center, start);
   .timer-status{
-    flex-direction: row;
+    border: solid 1px #000;
+    flex-direction: column;
     display: flex;   
+    margin-top: 30px;
+    h2{
+      font-size: 50px;
+      -webkit-text-fill-color: black;
+      -webkit-text-stroke: 1px $white;
+    }
+    img{
+      width: 200px;
+      transition: 0.3s;
+    }
+    img:hover{
+      cursor: pointer;
+    }
+    img:active{
+      transform: scale(0.8);
+    }
   }
   h1{
-    border: solid 1px #000;
-    font-size: 300px;
+    font-size: 390px;
     -webkit-text-fill-color: black;
     -webkit-text-stroke: 8px $white;
-  }
-  h2{
-    font-size: 50px;
-    -webkit-text-fill-color: black;
-    -webkit-text-stroke: 1px $white;
+    margin: 5px 0 0 0;
   }
 }
 

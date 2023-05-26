@@ -1,6 +1,8 @@
 import {useState, useEffect} from "react";
-import {  useSelector } from "react-redux";
 import { formatTimer } from "../controllers/controllers";
+import { useDispatch, useSelector } from "react-redux";
+import { dayHour } from "../redux/action";
+//import Play from '../img/Resume.png';
 
 function Timer() {
 
@@ -8,21 +10,20 @@ function Timer() {
   const [timer, setTimer] = useState(true)
   const [seconds, setSeconds] = useState(workTimer);
   const [active, setActive] = useState(true);
-  const [leftSessions, setLeftSession] = useState(sessionsTimer);
-  // let divStyle = {
-  //   background: `linear-gradient(${primaryColor} 50%, ${secundaryColor})`
-  // }
+  const [leftSessions, setLeftSession] = useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (seconds < 0) {
-      if (leftSessions === 1) {
-        setLeftSession((times : number) => times - 1);
+      if (leftSessions === sessionsTimer) {
         setActive(false);
         alert('time done');
         setSeconds(0)
       } else {
         if (timer) {
-          setLeftSession((times : number) => times - 1);
+          setLeftSession((times : number) => times + 1);
+          setTimer(!timer);
+        } else {
           setTimer(!timer);
         }
       }
@@ -31,23 +32,27 @@ function Timer() {
 
 
   useEffect(() => {
-    let interval : any;
-    
-    if (active && sessionsTimer > 0) {
+    dispatch(dayHour());
+    if (active && sessionsTimer >= 0) {
       if (timer) {
         setSeconds(workTimer);
       } else {
         setSeconds(breakTimer);
       }
+      
+    }
+  }, [timer]);
+
+  useEffect(() => {
+    let interval : any;
+    dispatch(dayHour());
+    if (active) {
       interval = setInterval(() => {
         setSeconds((prevSeconds : number) => prevSeconds - 1);
       }, 1000)
     }
-    
     return () => clearInterval(interval)
-  }, [active, timer]);
-
-  
+  }, [active])
   
   const startTimer = () => {
     setActive(true);
@@ -59,13 +64,15 @@ function Timer() {
 
   return(
     <div id="Timer">
-      <div className="timer-status">
-        <div className="buttons-timer">
-        <button onClick={startTimer}>Start</button><button onClick={stopTimer}>Stop</button>
-        </div>
-        <h2 >{leftSessions}</h2>
-      </div>
         <h1 className="time">{formatTimer(seconds)}</h1>
+      <div className="timer-status">
+        
+        <div className="buttons-timer">
+          <button onClick={startTimer}>Start</button>
+          <button onClick={stopTimer}>Stop</button>
+        </div>
+        <h2 >{leftSessions} / {sessionsTimer}</h2>
+      </div>
     </div>
   )
 }

@@ -1,13 +1,12 @@
 import { Link} from "react-router-dom";
-import { twenty_five, fifty, oneSession, twoSession, fourSession, eightSession } from "../redux/action";
+import { twenty_five, fifty, oneSession, twoSession, fourSession, eightSession, dayHour } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { handle25Change, handle50change } from "../controllers/controllers";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 function Home() {
     const dispatch = useDispatch();
-    const {workTimer, breakTimer, sessionsTimer} = useSelector((state : any) => state)
+    const {workTimer, breakTimer, sessionsTimer, primaryColor, secundaryColor} = useSelector((state : any) => state)
     const [is25Checked, set25Checked] = useState(true);
     const [is50Checked, set50Checked] = useState(false);
     const [disabled, setDisabled] = useState(true);
@@ -15,6 +14,12 @@ function Home() {
         timer: '',
         sessions: ''
     });
+    let divStyle = {
+        background: `linear-gradient(${primaryColor}, ${secundaryColor})`
+      }
+    useEffect(() => {
+        dispatch(dayHour());
+    }, [])
 
     useEffect(() => {
         if (is25Checked) {
@@ -55,19 +60,6 @@ function Home() {
                         <input id={options.sessions !== '8' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(eightSession()); setOptions({...options, sessions: '8'})}} value='8 Session' type="button"/>
                     </div>
                 </div>
-                {/* <div id="divisores">
-                    <div>
-                        <h2>Background Color</h2>
-                    </div>
-                    <div className="config-Timer-background">
-                        <div id={options.color !== 'default' ? "color" : "color-active"} onClick={() => {dispatch(selectColor('#a9d6ec', '#000')); setOptions({...options, color: 'default'})}} className="default"></div>
-                        <div id={options.color !== 'grey' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#4d4d4d', '#000')); setOptions({...options, color: 'grey'})}} className="grey"></div>
-                        <div id={options.color !== 'green' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#1a9825', '#000')); setOptions({...options, color: 'green'})}} className="green"></div>
-                        <div id={options.color !== 'blue' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#080064', '#000')); setOptions({...options, color: 'blue'})}} className="blue"></div>
-                        <div id={options.color !== 'violet' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#330b56', '#000')); setOptions({...options, color: 'violet'})}} className="violet"></div>
-                        <div id={options.color !== 'dark' ? "color" : 'color-active'} onClick={() => {dispatch(selectColor('#191818', '#000')); setOptions({...options, color: 'dark'})}} className="dark"></div>
-                    </div>
-                </div> */}
                 <div>
                     <Link to={`/timer`}>
                         <button className={!disabled ? "btn-start" : "btn-start-disabled"} disabled={disabled}>
@@ -77,6 +69,9 @@ function Home() {
                 </div>
             </div>
             <div className="result-home">
+                <div style={divStyle} className="demo">
+                    <h2>00:00</h2>
+                </div>
                 <img src="" alt="Pomo Cat" />
             </div>
         </div>
