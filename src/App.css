@@ -214,34 +214,50 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
+}
+#Timer .buttons-timer {
+  position: absolute;
+  top: 10px;
+}
+#Timer .buttons-timer img {
+  width: 150px;
+  transition: 0.3s;
+}
+#Timer .buttons-timer img:hover {
+  cursor: pointer;
+}
+#Timer .buttons-timer img:active {
+  transform: scale(0.8);
 }
 #Timer .timer-status {
-  border: solid 1px #000;
-  flex-direction: column;
+  flex-direction: row;
   display: flex;
-  margin-top: 30px;
+  justify-content: space-around;
+  align-items: start;
+  width: 50%;
+  height: 10%;
 }
 #Timer .timer-status h2 {
+  margin: 0;
   font-size: 50px;
   -webkit-text-fill-color: black;
   -webkit-text-stroke: 1px #f2f2f2;
 }
-#Timer .timer-status img {
-  width: 200px;
-  transition: 0.3s;
+#Timer .time {
+  height: auto;
+  display: flex;
+  justify-content: start;
 }
-#Timer .timer-status img:hover {
-  cursor: pointer;
-}
-#Timer .timer-status img:active {
-  transform: scale(0.8);
-}
-#Timer h1 {
+#Timer .time h1 {
   font-size: 390px;
   -webkit-text-fill-color: black;
   -webkit-text-stroke: 8px #f2f2f2;
-  margin: 5px 0 0 0;
+  margin: 0;
+}
+#Timer .ProgressBar {
+  margin-top: 30px;
+  width: 70%;
 }
 
 @media (max-width: 720px) {

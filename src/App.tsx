@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dayHour } from './redux/action';
 
+
 function App() {
   const dispatch = useDispatch();
   const { primaryColor, secundaryColor } = useSelector((state: any) => state)
@@ -22,7 +23,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Landing/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
-      <Route path='/timer' element={<Timer/>}></Route>
+      <Route path='/timer' element={<Timer />}></Route>
     </Routes>
     </div>
   );

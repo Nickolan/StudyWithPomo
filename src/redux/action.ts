@@ -7,19 +7,19 @@ export const fifty = () => {
 }
 
 export const oneSession = () => {
-    return { type: 'oneSession' };
+    return { type: 'oneHour' };
 };
 
 export const twoSession = () => {
-    return { type: 'twoSession' };
+    return { type: 'twoHours' };
 };
 
 export const fourSession = () => {
-    return { type: 'fourSession' };
+    return { type: 'fourHours' };
 };
 
 export const eightSession = () => {
-    return { type: 'eightSession' };
+    return { type: 'eightHours' };
 };
 
 export const dayHour = () => {
@@ -37,4 +37,7 @@ export const dayHour = () => {
         return {type: 'DAYHOUR', payload: {moment: 'prevnight', primary:'#201f41', secundary: '#9531c4'}};
     }
 };
+export const sessionTimer = () => {
+    return {type: 'SESSION_TIMER'}
+}; 
 

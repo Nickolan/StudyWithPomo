@@ -1,10 +1,12 @@
-const initialState : object = {
+const initialState : any = {
     workTimer: 1500,
     breakTimer: 300,
+    timer: 1,
+    session: 1,
     sessionsTimer: 1,
     sectionDay: '',
     primaryColor: '',
-    secundaryColor: ''
+    secundaryColor: '',
 }
 
 function rootReducer (state = initialState, action : any) {
@@ -12,34 +14,36 @@ function rootReducer (state = initialState, action : any) {
         case '25/5':
             return{
                 ...state,
-                workTimer: 1500,
-                breakTimer: 300, 
+                workTimer: 15,
+                breakTimer: 3, 
+                timer: 2,
             }
         case '50/10':
             return{
                 ...state,
                 workTimer: 3000,
                 breakTimer: 600,
+                timer: 1
             }
-        case 'oneSession':
+        case 'oneHour':
             return{
                 ...state,
-                sessionsTimer: 1
+                session: 1
             }
-        case 'twoSession':
+        case 'twoHours':
             return{
                 ...state,
-                sessionsTimer: 2
+                session: 2
             }
-        case 'fourSession':
+        case 'fourHours':
             return{
                 ...state,
-                sessionsTimer: 4
+                session: 4
             }
-        case 'eightSession':
+        case 'eightHours':
             return{
                 ...state,
-                sessionsTimer: 8
+                session: 8
             }
         case 'DAYHOUR':
             return{
@@ -47,6 +51,11 @@ function rootReducer (state = initialState, action : any) {
                 sectionDay: action.payload.moment, 
                 primaryColor: action.payload.primary,
                 secundaryColor: action.payload.secundary
+            }
+        case 'SESSION_TIMER':
+            return{
+                ...state,
+                sessionsTimer: state.session * state.timer
             }
         default:
             return{

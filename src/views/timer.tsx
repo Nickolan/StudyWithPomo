@@ -2,7 +2,10 @@ import {useState, useEffect} from "react";
 import { formatTimer } from "../controllers/controllers";
 import { useDispatch, useSelector } from "react-redux";
 import { dayHour } from "../redux/action";
-//import Play from '../img/Resume.png';
+import Play from '../img/Resume.png';
+import Stop from '../img/pause.png';
+import ProgressBarStep from "../components/ProgressbarStep";
+import { playSound } from "../audios/sound";
 
 function Timer() {
 
@@ -15,9 +18,9 @@ function Timer() {
 
   useEffect(() => {
     if (seconds < 0) {
+      playSound();
       if (leftSessions === sessionsTimer) {
         setActive(false);
-        alert('time done');
         setSeconds(0)
       } else {
         if (timer) {
@@ -26,10 +29,11 @@ function Timer() {
         } else {
           setTimer(!timer);
         }
+
       }
+      
     }
 }, [seconds])
-
 
   useEffect(() => {
     dispatch(dayHour());
@@ -44,6 +48,7 @@ function Timer() {
   }, [timer]);
 
   useEffect(() => {
+    
     let interval : any;
     dispatch(dayHour());
     if (active) {
@@ -64,14 +69,22 @@ function Timer() {
 
   return(
     <div id="Timer">
-        <h1 className="time">{formatTimer(seconds)}</h1>
-      <div className="timer-status">
-        
         <div className="buttons-timer">
-          <button onClick={startTimer}>Start</button>
-          <button onClick={stopTimer}>Stop</button>
+          {
+            !active ? <img onClick={startTimer} src={Play} alt="Start" /> : <img src={Stop} alt="Stop" onClick={stopTimer} />
+          }
         </div>
-        <h2 >{leftSessions} / {sessionsTimer}</h2>
+      <div className="time">
+        <h1 >{formatTimer(seconds)}</h1>
+      </div>
+      <div className="timer-status">
+          <h2 >{timer ? 'Work Time' : 'Break Time'}</h2>
+          <h2 >Pomodoro #{leftSessions} / {sessionsTimer}</h2>
+      </div>
+      <div className="ProgressBar">
+      {
+        <ProgressBarStep percent={timer ? (workTimer - seconds) * 100 / workTimer : (breakTimer - seconds) * 100 / breakTimer} />
+      }
       </div>
     </div>
   )

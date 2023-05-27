@@ -215,20 +215,14 @@ div:hover{
 
 #Timer{
   width: 100vw;
+  
   height: 100%;
-  @include flexibility(column, center, start);
-  .timer-status{
-    border: solid 1px #000;
-    flex-direction: column;
-    display: flex;   
-    margin-top: 30px;
-    h2{
-      font-size: 50px;
-      -webkit-text-fill-color: black;
-      -webkit-text-stroke: 1px $white;
-    }
+  @include flexibility(column, center, center);
+  .buttons-timer{
+    position: absolute;
+    top: 10px;
     img{
-      width: 200px;
+      width: 150px;
       transition: 0.3s;
     }
     img:hover{
@@ -238,13 +232,38 @@ div:hover{
       transform: scale(0.8);
     }
   }
-  h1{
-    font-size: 390px;
-    -webkit-text-fill-color: black;
-    -webkit-text-stroke: 8px $white;
-    margin: 5px 0 0 0;
+  .timer-status{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    width: 50%;
+    height: 10%;
+    h2{
+      margin: 0;
+      font-size: 50px;
+      -webkit-text-fill-color: black;
+      -webkit-text-stroke: 1px $white;
+    }
   }
+  .time{
+    height: auto;
+    display: flex;
+    justify-content: start;
+    h1{
+      font-size: 390px;
+      -webkit-text-fill-color: black;
+      -webkit-text-stroke: 8px $white;
+      margin: 0;
+    }
+  }
+    .ProgressBar{
+    margin-top: 30px;
+    width: 70%;
+  }
+  
 }
+
 
 @media (max-width: 720px){
   #Landing{
