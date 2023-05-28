@@ -14,8 +14,8 @@ function rootReducer (state = initialState, action : any) {
         case '25/5':
             return{
                 ...state,
-                workTimer: 15,
-                breakTimer: 3, 
+                workTimer: 1500,
+                breakTimer: 300, 
                 timer: 2,
             }
         case '50/10':

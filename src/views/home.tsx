@@ -2,7 +2,8 @@ import { Link} from "react-router-dom";
 import { twenty_five, fifty, oneSession, twoSession, fourSession, eightSession, dayHour, sessionTimer } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { handle25Change, handle50change } from "../controllers/controllers";
+import Preview from "../components/preview";
+import kitty from '../img/kitty.png';
 
 function Home() {
     const dispatch = useDispatch();
@@ -60,10 +61,10 @@ function Home() {
                         <h2>Sessions</h2>
                     </div>
                     <div className="config-Timer-sessions">
-                        <input id={options.sessions !== '1' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(oneSession()); setOptions({...options, sessions: '1'})}}  value='1 Hour/s' type="button"/>
-                        <input id={options.sessions !== '2' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(twoSession()); setOptions({...options, sessions: '2'})}}  value='2 Hour/s' type="button"/>
-                        <input id={options.sessions !== '4' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(fourSession()); setOptions({...options, sessions: '4'})}} value='4 Hour/s' type="button"/>
-                        <input id={options.sessions !== '8' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(eightSession()); setOptions({...options, sessions: '8'})}} value='8 Hour/s' type="button"/>
+                        <input id={options.sessions !== '1' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(oneSession()); setOptions({...options, sessions: '1'})}} value='Chill'  title='1 Hour' type="button"/>
+                        <input id={options.sessions !== '2' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(twoSession()); setOptions({...options, sessions: '2'})}}  value='Casual' title='2 Hour/s' type="button"/>
+                        <input id={options.sessions !== '4' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(fourSession()); setOptions({...options, sessions: '4'})}} value='Part Time' title="4 Hour/s " type="button"/>
+                        <input id={options.sessions !== '8' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(eightSession()); setOptions({...options, sessions: '8'})}} value='Full Time' title="8 Hour/s" type="button"/>
                     </div>
                 </div>
                 <div>
@@ -76,9 +77,9 @@ function Home() {
             </div>
             <div className="result-home">
                 <div style={divStyle} className="demo">
-                    <h2>00:00</h2>
+                    <Preview></Preview>
                 </div>
-                <img src="" alt="Pomo Cat" />
+                <img className="kitty" src={kitty} alt="Pomo Cat" />
             </div>
         </div>
     )

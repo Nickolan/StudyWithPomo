@@ -1,6 +1,6 @@
 import React from "react";
 import Pomo from '../img/pomo.png';
-import Reloj from '../img/Reloj.png';
+import Reloj from '../img/Clock.png';
 import { Link } from 'react-router-dom';
 
 
