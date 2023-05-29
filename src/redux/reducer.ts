@@ -7,6 +7,7 @@ const initialState : any = {
     sectionDay: '',
     primaryColor: '',
     secundaryColor: '',
+    isBackground : false,
 }
 
 function rootReducer (state = initialState, action : any) {
@@ -56,6 +57,11 @@ function rootReducer (state = initialState, action : any) {
             return{
                 ...state,
                 sessionsTimer: state.session * state.timer
+            }
+        case 'SETBACKGROUND':
+            return{
+                ...state,
+                isBackground: !state.isBackground
             }
         default:
             return{

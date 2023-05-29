@@ -8,7 +8,6 @@
 }
 
 #Landing {
-  color: #22214e;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -61,6 +60,7 @@
   align-items: center;
 }
 #Home .container-home, #Home .result-home {
+  z-index: 0;
   border: #000 solid 2px;
   background-color: #ffffff;
   border-radius: 5%;
@@ -79,6 +79,7 @@
   height: 150px;
 }
 #Home .container-home #divisores, #Home .result-home #divisores {
+  z-index: -1;
   border: #000 solid 1px;
   background-color: rgba(0, 0, 0, 0.1254901961);
   border-radius: 6%;
@@ -126,6 +127,19 @@
   justify-content: space-evenly;
   width: auto;
   height: auto;
+}
+#Home .container-home #divisores .config-Timer-sessions #Background, #Home .result-home #divisores .config-Timer-sessions #Background {
+  background-color: #58a9ff;
+  border-radius: 25% 25% 25% 25%;
+  border: none;
+  color: #f2f2f2;
+  height: 45px;
+  font-size: 20px;
+  transition: 0.5s;
+}
+#Home .container-home #divisores .config-Timer-sessions #Background:hover, #Home .result-home #divisores .config-Timer-sessions #Background:hover {
+  cursor: pointer;
+  transform: scale(1.18);
 }
 #Home .container-home #divisores .config-Timer-sessions #sessions, #Home .result-home #divisores .config-Timer-sessions #sessions {
   background-color: #58a9ff;
@@ -219,6 +233,7 @@
 #Timer {
   width: 100vw;
   height: 100%;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -245,8 +260,10 @@
   align-items: start;
   width: 50%;
   height: 10%;
+  z-index: 1;
 }
 #Timer .timer-status h2 {
+  font-family: Playfair Display;
   margin: 0;
   font-size: 50px;
   -webkit-text-fill-color: black;
@@ -254,10 +271,12 @@
 }
 #Timer .time {
   height: auto;
+  z-index: 1;
   display: flex;
   justify-content: start;
 }
 #Timer .time h1 {
+  font-family: Playfair Display;
   font-size: 390px;
   -webkit-text-fill-color: black;
   -webkit-text-stroke: 8px #f2f2f2;
@@ -284,16 +303,66 @@
   justify-content: space-evenly;
 }
 #Preview .prev-status h3 {
+  font-family: Playfair Display;
   font-size: 20px;
   -webkit-text-fill-color: black;
   -webkit-text-stroke: 1px #f2f2f2;
 }
 #Preview h3 {
+  font-family: Playfair Display;
   margin-top: 15px;
   margin-bottom: 20px;
   font-size: 80px;
   -webkit-text-fill-color: black;
   -webkit-text-stroke: 2px #f2f2f2;
+}
+
+#Videos {
+  border: #000 solid 3px;
+  height: 250px;
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+}
+#Videos .videoloop {
+  position: fixed;
+  top: 10;
+  left: 470px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#Videos .videoloop video {
+  height: 250px;
+}
+#Videos .text {
+  margin-top: 40px;
+}
+#Videos .text .prev-status {
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  justify-content: space-evenly;
+}
+#Videos .text .prev-status h3 {
+  font-family: Playfair Display;
+  font-size: 20px;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke: 1px #f2f2f2;
+}
+#Videos .text h3 {
+  font-family: Playfair Display;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size: 80px;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke: 2px #f2f2f2;
+}
+
+#VideoTimer {
+  position: fixed;
+  z-index: 0;
 }
 
 @media (max-width: 720px) {

@@ -6,10 +6,12 @@ import Play from '../img/Resume.png';
 import Stop from '../img/pause.png';
 import ProgressBarStep from "../components/ProgressbarStep";
 import { playSound } from "../audios/sound";
+import { Video } from "../videos/videos";
+import { VideoTimer } from "../videos/timerVideo";
 
 function Timer() {
 
-  const {workTimer, breakTimer, sessionsTimer} = useSelector((state : any) => state)
+  const {workTimer, breakTimer, sessionsTimer, isBackground} = useSelector((state : any) => state)
   const [timer, setTimer] = useState(true)
   const [seconds, setSeconds] = useState(workTimer);
   const [active, setActive] = useState(true);
@@ -69,6 +71,7 @@ function Timer() {
 
   return(
     <div id="Timer">
+      {isBackground ? <VideoTimer></VideoTimer> : null}
         <div className="buttons-timer">
           {
             !active ? <img onClick={startTimer} src={Play} alt="Start" /> : <img src={Stop} alt="Stop" onClick={stopTimer} />

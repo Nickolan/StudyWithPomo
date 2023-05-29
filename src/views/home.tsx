@@ -1,13 +1,15 @@
 import { Link} from "react-router-dom";
-import { twenty_five, fifty, oneSession, twoSession, fourSession, eightSession, dayHour, sessionTimer } from "../redux/action";
+import { twenty_five, setBackground ,fifty, oneSession, twoSession, fourSession, eightSession, dayHour, sessionTimer } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Preview from "../components/preview";
+import { Video } from "../videos/videos";
 import kitty from '../img/kitty.png';
+
 
 function Home() {
     const dispatch = useDispatch();
-    const {sessionsTimer, session, timer, primaryColor, secundaryColor} = useSelector((state : any) => state)
+    const {sessionsTimer, session, timer, primaryColor, secundaryColor, isBackground} = useSelector((state : any) => state)
     const [disabled, setDisabled] = useState(true);
     const [options, setOptions] = useState({
         timer: '',
@@ -67,6 +69,15 @@ function Home() {
                         <input id={options.sessions !== '8' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(eightSession()); setOptions({...options, sessions: '8'})}} value='Full Time' title="8 Hour/s" type="button"/>
                     </div>
                 </div>
+                <div id="divisores">
+                    <div>
+                        <h2>BackGround</h2>
+                    </div>
+                    <div className="config-Timer-sessions">
+                        <input onClick={ () => dispatch(setBackground())} id='Background' value='Default' type="button" />
+                        <input onClick={ () => dispatch(setBackground())} id="Background" type="button" value="Rain" />
+                    </div>
+                </div>
                 <div>
                     <Link to={`/timer`}>
                         <button className={!disabled ? "btn-start" : "btn-start-disabled"} disabled={disabled}>
@@ -76,9 +87,9 @@ function Home() {
                 </div>
             </div>
             <div className="result-home">
-                <div style={divStyle} className="demo">
-                    <Preview></Preview>
-                </div>
+                {
+                    !isBackground ? <div style={divStyle} className="demo"><Preview></Preview></div> : <Video></Video>
+                }
                 <img className="kitty" src={kitty} alt="Pomo Cat" />
             </div>
         </div>

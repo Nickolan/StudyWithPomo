@@ -40,4 +40,7 @@ export const dayHour = () => {
 export const sessionTimer = () => {
     return {type: 'SESSION_TIMER'}
 }; 
+export const setBackground = () => {
+    return {type: 'SETBACKGROUND'}
+}
 
