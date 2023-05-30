@@ -40,7 +40,17 @@ export const dayHour = () => {
 export const sessionTimer = () => {
     return {type: 'SESSION_TIMER'}
 }; 
-export const setBackground = () => {
-    return {type: 'SETBACKGROUND'}
+export const setBackgroundDefault = () => {
+    return {type: 'SETBACKGROUNDDEFAULT'}
 }
+export const setBackgroundSpecial = () => {
+    return {type: 'SETBACKGROUNDSPECIAL'}
+}
+export const soundEffect = () => {
+    return {type: 'SOUND'}
+}
+export const selectOptions = (obj: any) => {
+    return {type: 'SELECT_OPTIONS', payload: obj}
+}
+
 

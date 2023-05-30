@@ -1,23 +1,18 @@
 import { Link} from "react-router-dom";
-import { twenty_five, setBackground ,fifty, oneSession, twoSession, fourSession, eightSession, dayHour, sessionTimer } from "../redux/action";
+import { twenty_five, selectOptions, soundEffect, setBackgroundDefault, setBackgroundSpecial ,fifty, oneSession, twoSession, fourSession, eightSession, dayHour, sessionTimer } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import Preview from "../components/preview";
-import { Video } from "../videos/videos";
 import kitty from '../img/kitty.png';
 
 
 function Home() {
     const dispatch = useDispatch();
-    const {sessionsTimer, session, timer, primaryColor, secundaryColor, isBackground} = useSelector((state : any) => state)
+    const {session, timer, isBackground, sound, objects, selected} = useSelector((state : any) => state)
     const [disabled, setDisabled] = useState(true);
     const [options, setOptions] = useState({
         timer: '',
         sessions: ''
     });
-    let divStyle = {
-        background: `linear-gradient(${primaryColor}, ${secundaryColor})`
-    }
     
     
     useEffect(() => {
@@ -44,6 +39,15 @@ function Home() {
         }
         
     }, [options])
+
+    const handleSound = () => {
+        dispatch(soundEffect())
+    }
+    const handleSelections = (event: any) =>{
+        let value = event.target.value
+        let obj =  objects.find((elem: any) => elem.name === value)
+        dispatch(selectOptions(obj))
+    }
 
     return(
         <div id="Home">
@@ -74,8 +78,8 @@ function Home() {
                         <h2>BackGround</h2>
                     </div>
                     <div className="config-Timer-sessions">
-                        <input onClick={ () => dispatch(setBackground())} id='Background' value='Default' type="button" />
-                        <input onClick={ () => dispatch(setBackground())} id="Background" type="button" value="Rain" />
+                        <input onClick={ () => dispatch(setBackgroundDefault())} id='Background' value='Default' type="button" />
+                        <input onClick={ () => dispatch(setBackgroundSpecial())} id="Background" type="button" value="ambience" />
                     </div>
                 </div>
                 <div>
@@ -88,7 +92,16 @@ function Home() {
             </div>
             <div className="result-home">
                 {
-                    !isBackground ? <div style={divStyle} className="demo"><Preview></Preview></div> : <Video></Video>
+                    isBackground ? <div>
+                        <div>
+                        <input type="button" onClick={handleSelections} value='coffee' name="enviroment" id="" />
+                        <input type="button" onClick={handleSelections} value='rain' name="enviroment" id="" />
+                        <input type="button" onClick={handleSelections} value='fireplace' name="enviroment" id="" />
+                        <input type="button" onClick={handleSelections} value='river' name="enviroment" id="" />
+                        </div>
+                        <audio src={selected.sound}>Hola</audio>
+                        <div><label ><input type="radio" onClick={handleSound} checked={sound} name="enviroment" id="enviroment" /> Apply sound Enviroment</label></div>
+                    </div>  : null
                 }
                 <img className="kitty" src={kitty} alt="Pomo Cat" />
             </div>

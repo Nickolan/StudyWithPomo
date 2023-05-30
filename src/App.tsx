@@ -9,6 +9,7 @@ import { dayHour } from './redux/action';
 
 
 function App() {
+
   const dispatch = useDispatch();
   const { primaryColor, secundaryColor } = useSelector((state: any) => state)
   let divStyle = {

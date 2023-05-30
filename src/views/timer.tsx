@@ -5,18 +5,23 @@ import { dayHour } from "../redux/action";
 import Play from '../img/Resume.png';
 import Stop from '../img/pause.png';
 import ProgressBarStep from "../components/ProgressbarStep";
-import { playSound } from "../audios/sound";
-import { Video } from "../videos/videos";
+import { playSound, effectSound } from "../audios/sound";
 import { VideoTimer } from "../videos/timerVideo";
 
 function Timer() {
 
-  const {workTimer, breakTimer, sessionsTimer, isBackground} = useSelector((state : any) => state)
+  const {workTimer, selected, breakTimer, sessionsTimer, isBackground, sound} = useSelector((state : any) => state)
   const [timer, setTimer] = useState(true)
   const [seconds, setSeconds] = useState(workTimer);
   const [active, setActive] = useState(true);
   const [leftSessions, setLeftSession] = useState(0);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (sound) {
+      effectSound()
+    } 
+  }, [])
 
   useEffect(() => {
     if (seconds < 0) {
@@ -50,7 +55,6 @@ function Timer() {
   }, [timer]);
 
   useEffect(() => {
-    
     let interval : any;
     dispatch(dayHour());
     if (active) {
@@ -71,6 +75,7 @@ function Timer() {
 
   return(
     <div id="Timer">
+            <audio src={selected.sound} autoPlay={sound} loop={timer}></audio>
       {isBackground ? <VideoTimer></VideoTimer> : null}
         <div className="buttons-timer">
           {
