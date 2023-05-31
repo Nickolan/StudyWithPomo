@@ -62,7 +62,7 @@
 #Home .container-home, #Home .result-home {
   z-index: 0;
   border: #000 solid 2px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.9176470588);
   border-radius: 5%;
   width: 30%;
   height: 80%;
@@ -70,6 +70,31 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+#Home .container-home .images-back, #Home .result-home .images-back {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#Home .container-home .images-back .images-button, #Home .result-home .images-back .images-button {
+  display: grid;
+  grid-template-rows: 140px 140px;
+  grid-template-columns: 230px 230px;
+  grid-gap: 10px;
+}
+#Home .container-home .images-back .images-button #button-back, #Home .result-home .images-back .images-button #button-back {
+  background-color: #a9d6ec;
+}
+#Home .container-home .images-back .images-button #button-back:hover, #Home .result-home .images-back .images-button #button-back:hover {
+  background-color: #00c3ff;
+}
+#Home .container-home .images-back .images-button #button-back-active, #Home .result-home .images-back .images-button #button-back-active {
+  background-color: #58a9ff;
+}
+#Home .container-home .images-back .images-button #environment, #Home .result-home .images-back .images-button #environment {
+  width: 200px;
+  margin: 5px;
 }
 #Home .container-home .demo, #Home .result-home .demo {
   width: 450px;
@@ -81,7 +106,7 @@
 #Home .container-home #divisores, #Home .result-home #divisores {
   z-index: 1;
   border: #000 solid 1px;
-  background-color: rgba(0, 0, 0, 0.1254901961);
+  background-color: rgba(199, 244, 255, 0.6117647059);
   border-radius: 6%;
   padding-top: 0;
   padding-bottom: 15px;
@@ -143,6 +168,16 @@
 #Home .container-home #divisores .config-Timer-sessions #Background:hover, #Home .result-home #divisores .config-Timer-sessions #Background:hover {
   cursor: pointer;
   transform: scale(1.18);
+}
+#Home .container-home #divisores .config-Timer-sessions #Background-active, #Home .result-home #divisores .config-Timer-sessions #Background-active {
+  background-color: #58a9ff;
+  border: 0.8px solid black;
+  color: #f2f2f2;
+  border-radius: 25% 25% 25% 25%;
+  height: 45px;
+  font-size: 20px;
+  transform: scale(1.15);
+  transition: 0.5s;
 }
 #Home .container-home #divisores .config-Timer-sessions #sessions, #Home .result-home #divisores .config-Timer-sessions #sessions {
   background-color: #58a9ff;
@@ -227,7 +262,7 @@
 }
 #Home .container-home .btn-start-disabled, #Home .result-home .btn-start-disabled {
   background-color: #a9d6ec;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9176470588);
   width: 100px;
   height: 50px;
   font-size: 25px;
@@ -246,7 +281,9 @@
 #Timer .buttons-timer {
   position: absolute;
   top: 10px;
-  background-color: rgba(77, 77, 77, 0.4980392157);
+  background-color: rgba(39, 190, 255, 0.4980392157);
+  border-radius: 50%;
+  height: 150px;
 }
 #Timer .buttons-timer img {
   width: 150px;
@@ -371,7 +408,33 @@
   z-index: 0;
 }
 
-@media (max-width: 720px) {
+#Footer {
+  border-radius: 20% 20% 20% 20%;
+  height: 60px;
+  bottom: 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5490196078);
+}
+#Footer #social a {
+  margin: 0 10px 0 10px;
+}
+#Footer div {
+  margin: 0 20px 0 20px;
+}
+#Footer div h2 a {
+  font-size: 30px;
+  color: #2f91fa;
+  -webkit-text-stroke: 0.7px #f2f2f2;
+  text-decoration: none;
+}
+#Footer img {
+  width: 70px;
+}
+
+@media (max-width: 1024px) {
   #Landing {
     display: flex;
     flex-direction: column;

@@ -10,6 +10,10 @@ export const oneSession = () => {
     return { type: 'oneHour' };
 };
 
+export const Sessions = (session: number) => {
+    return { type: 'SESSIONS', payload: session};
+};
+
 export const twoSession = () => {
     return { type: 'twoHours' };
 };

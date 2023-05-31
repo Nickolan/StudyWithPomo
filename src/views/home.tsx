@@ -1,14 +1,21 @@
 import { Link} from "react-router-dom";
-import { twenty_five, selectOptions, soundEffect, setBackgroundDefault, setBackgroundSpecial ,fifty, oneSession, twoSession, fourSession, eightSession, dayHour, sessionTimer } from "../redux/action";
+import { twenty_five, Sessions, selectOptions, soundEffect, setBackgroundDefault, setBackgroundSpecial ,fifty, dayHour, sessionTimer } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import kitty from '../img/kitty.png';
+import Footer from "../components/footer";
 
 
 function Home() {
     const dispatch = useDispatch();
     const {session, timer, isBackground, sound, objects, selected} = useSelector((state : any) => state)
     const [disabled, setDisabled] = useState(true);
+    const images = {
+        coffee: 'https://firebasestorage.googleapis.com/v0/b/study-with-pomo.appspot.com/o/images%2Fcoffee.png?alt=media&token=82fe1424-2f9d-403b-857b-7a7056f6a400&_gl=1*1t3oxpl*_ga*MTY1ODQ3OTUxMy4xNjg1MzY1ODgw*_ga_CW55HF8NVT*MTY4NTUzNjUzOC44LjEuMTY4NTUzNjkzNS4wLjAuMA..',
+        river: 'https://firebasestorage.googleapis.com/v0/b/study-with-pomo.appspot.com/o/images%2Friver.png?alt=media&token=635c3a8f-ba61-4d42-ae2c-e63a1d53649f&_gl=1*1qbtu1m*_ga*MTY1ODQ3OTUxMy4xNjg1MzY1ODgw*_ga_CW55HF8NVT*MTY4NTUzNjUzOC44LjEuMTY4NTUzNzA2OC4wLjAuMA..',
+        fireplace: 'https://firebasestorage.googleapis.com/v0/b/study-with-pomo.appspot.com/o/images%2Ffireplace.png?alt=media&token=13a36f28-152f-4580-978b-9613a0583715&_gl=1*t1hhue*_ga*MTY1ODQ3OTUxMy4xNjg1MzY1ODgw*_ga_CW55HF8NVT*MTY4NTUzNjUzOC44LjEuMTY4NTUzNzA2Mi4wLjAuMA..',
+        rain: 'https://firebasestorage.googleapis.com/v0/b/study-with-pomo.appspot.com/o/images%2Frain.png?alt=media&token=337ba98d-e366-4b87-9671-50d26a48fca1&_gl=1*1nd0m4e*_ga*MTY1ODQ3OTUxMy4xNjg1MzY1ODgw*_ga_CW55HF8NVT*MTY4NTUzNjUzOC44LjEuMTY4NTUzNzA2NS4wLjAuMA..',
+    }
     const [options, setOptions] = useState({
         timer: '',
         sessions: ''
@@ -43,15 +50,13 @@ function Home() {
     const handleSound = () => {
         dispatch(soundEffect())
     }
-    const handleSelections = (event: any) =>{
-        let value = event.target.value
+    const handleSelections = (value: string) =>{
         let obj =  objects.find((elem: any) => elem.name === value)
         dispatch(selectOptions(obj))
     }
 
     return(
         <div id="Home">
-            
             <div className="container-home">
                 <div id="divisores">
                     <h2>Timer</h2>
@@ -67,10 +72,10 @@ function Home() {
                         <h2>Sessions</h2>
                     </div>
                     <div className="config-Timer-sessions">
-                        <input id={options.sessions !== '1' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(oneSession()); setOptions({...options, sessions: '1'})}} value='Chill'  title='1 Hour' type="button"/>
-                        <input id={options.sessions !== '2' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(twoSession()); setOptions({...options, sessions: '2'})}}  value='Casual' title='2 Hour/s' type="button"/>
-                        <input id={options.sessions !== '4' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(fourSession()); setOptions({...options, sessions: '4'})}} value='Part Time' title="4 Hour/s " type="button"/>
-                        <input id={options.sessions !== '8' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(eightSession()); setOptions({...options, sessions: '8'})}} value='Full Time' title="8 Hour/s" type="button"/>
+                        <input id={options.sessions !== '1' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(Sessions(1)); setOptions({...options, sessions: '1'})}} value='Chill'  title='1 Hour' type="button"/>
+                        <input id={options.sessions !== '2' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(Sessions(2)); setOptions({...options, sessions: '2'})}}  value='Casual' title='2 Hour/s' type="button"/>
+                        <input id={options.sessions !== '4' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(Sessions(4)); setOptions({...options, sessions: '4'})}} value='Part Time' title="4 Hour/s " type="button"/>
+                        <input id={options.sessions !== '8' ? 'sessions' : 'sessions-active'} onClick={() => {dispatch(Sessions(8)); setOptions({...options, sessions: '8'})}} value='Full Time' title="8 Hour/s" type="button"/>
                     </div>
                 </div>
                 <div id="divisores">
@@ -78,8 +83,8 @@ function Home() {
                         <h2>BackGround</h2>
                     </div>
                     <div className="config-Timer-sessions">
-                        <input onClick={ () => dispatch(setBackgroundDefault())} id='Background' value='Default' type="button" />
-                        <input onClick={ () => dispatch(setBackgroundSpecial())} id="Background" type="button" value="ambience" />
+                        <input onClick={ () => dispatch(setBackgroundDefault())} id={!isBackground ? 'Background-active' : 'Background'} value='Default' type="button" />
+                        <input onClick={ () => dispatch(setBackgroundSpecial())} id={isBackground ? 'Background-active' : 'Background'} type="button" value="ambience" />
                     </div>
                 </div>
                 <div>
@@ -92,19 +97,19 @@ function Home() {
             </div>
             <div className="result-home">
                 {
-                    isBackground ? <div>
-                        <div>
-                        <input type="button" onClick={handleSelections} value='coffee' name="enviroment" id="" />
-                        <input type="button" onClick={handleSelections} value='rain' name="enviroment" id="" />
-                        <input type="button" onClick={handleSelections} value='fireplace' name="enviroment" id="" />
-                        <input type="button" onClick={handleSelections} value='river' name="enviroment" id="" />
+                    isBackground ? <div className="images-back">
+                        <div className="images-button">
+                            <button id={selected.name === 'coffee' ? 'button-back-active' : 'button-back'} onClick={() => handleSelections('coffee')} name='coffee'><img id="environment" src={images.coffee} alt="Coffee" /></button>
+                            <button id={selected.name === 'fireplace' ? 'button-back-active' : 'button-back'} onClick={() => handleSelections('fireplace')} name='fireplace'><img id="environment" src={images.fireplace} alt="" /></button>
+                            <button id={selected.name === 'rain' ? 'button-back-active' : 'button-back'} onClick={() => handleSelections('rain')} name='rain'><img id="environment" src={images.rain} alt="" /></button>
+                            <button id={selected.name === 'river' ? 'button-back-active' : 'button-back'} onClick={() => handleSelections('river')} name='river'><img id="environment" src={images.river} alt="" /></button>  
                         </div>
-                        <audio src={selected.sound}>Hola</audio>
-                        <div><label ><input type="radio" onClick={handleSound} checked={sound} name="enviroment" id="enviroment" /> Apply sound Enviroment</label></div>
+                        <div><label ><input type="radio" onClick={handleSound} checked={sound} name="environment" id="environment" /> Apply sound Enviroment</label></div>
                     </div>  : null
                 }
                 <img className="kitty" src={kitty} alt="Pomo Cat" />
             </div>
+            <Footer></Footer>
         </div>
     )
 }
