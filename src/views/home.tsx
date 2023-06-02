@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import kitty from '../img/kitty.png';
 import Footer from "../components/footer";
+import BackButton from "../components/backButton";
 
 
 function Home() {
@@ -57,6 +58,7 @@ function Home() {
 
     return(
         <div id="Home">
+            <BackButton></BackButton>
             <div className="container-home">
                 <div id="divisores">
                     <h2>Timer</h2>

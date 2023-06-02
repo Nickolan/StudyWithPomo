@@ -7,6 +7,7 @@ import Stop from '../img/pause.png';
 import ProgressBarStep from "../components/ProgressbarStep";
 import { playSound, effectSound } from "../audios/sound";
 import { VideoTimer } from "../videos/timerVideo";
+import BackButton from "../components/backButton";
 
 function Timer() {
 
@@ -75,6 +76,7 @@ function Timer() {
 
   return(
     <div id="Timer">
+      <BackButton></BackButton>
             <audio src={selected.sound} autoPlay={sound} loop={timer}></audio>
       {isBackground ? <VideoTimer></VideoTimer> : null}
         <div className="buttons-timer">

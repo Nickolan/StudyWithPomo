@@ -97,7 +97,7 @@
   margin: 5px;
 }
 #Home .container-home .kitty, #Home .result-home .kitty {
-  height: 150px;
+  width: 90%;
 }
 #Home .container-home #divisores, #Home .result-home #divisores {
   z-index: 1;
@@ -384,7 +384,317 @@
   width: 70px;
 }
 
-@media (max-width: 1024px) {
+#backButton {
+  position: absolute;
+  top: 1vh;
+  left: 1vw;
+  z-index: 10;
+}
+#backButton div {
+  width: 100%;
+  background: linear-gradient(#2f91fa, #00c3ff);
+  border-radius: 50%;
+  border: #3172ff solid 3px;
+}
+#backButton div img {
+  width: 5vw;
+  padding-right: 4px;
+}
+#backButton div:hover {
+  cursor: pointer;
+  background: linear-gradient(#3b9aff, #33cfff);
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+  #Landing h1 {
+    font-size: 80px;
+    margin-bottom: 40px;
+  }
+  #Landing div {
+    width: auto;
+  }
+  #Landing div .clock {
+    z-index: 10;
+    transition: 1s;
+    position: relative;
+  }
+  #Landing div .pomoCat {
+    position: absolute;
+    margin: 50px 0px 0px -370px;
+    z-index: 0;
+    height: 40vh;
+    transition: 1s;
+    transform: rotate(0deg);
+  }
+  #Landing div:active .clock {
+    transform: scale(0.9);
+  }
+  #Landing div:active .pomoCat {
+    transform: scale(1);
+    margin: -150px 0px 0px -370px;
+  }
+  #Landing div:hover .clock {
+    transform: scale(1.1);
+  }
+  #Landing div:hover .pomoCat {
+    transform: scale(1) rotate(0deg);
+    margin: -150px 0px 0px -370px;
+  }
+  #Home .container-home, #Home .result-home {
+    width: 40vw;
+  }
+  #Home .container-home #divisores, #Home .result-home #divisores {
+    width: 80%;
+  }
+  #Home .container-home #divisores .config-Timer-time #time, #Home .result-home #divisores .config-Timer-time #time {
+    height: 45px;
+    font-size: 20px;
+    width: auto;
+  }
+  #Home .container-home #divisores .config-Timer-time #time-active, #Home .result-home #divisores .config-Timer-time #time-active {
+    height: 45px;
+    font-size: 20px;
+    width: auto;
+  }
+  #Home .container-home #divisores .config-Timer-sessions #Background, #Home .result-home #divisores .config-Timer-sessions #Background {
+    height: 45px;
+    font-size: 15px;
+    width: auto;
+  }
+  #Home .container-home #divisores .config-Timer-sessions #Background-active, #Home .result-home #divisores .config-Timer-sessions #Background-active {
+    height: 45px;
+    font-size: 15px;
+    width: auto;
+  }
+  #Home .container-home #divisores .config-Timer-sessions #sessions, #Home .result-home #divisores .config-Timer-sessions #sessions {
+    height: 45px;
+    font-size: 15px;
+    width: auto;
+  }
+  #Home .container-home #divisores .config-Timer-sessions #sessions-active, #Home .result-home #divisores .config-Timer-sessions #sessions-active {
+    height: 45px;
+    font-size: 15px;
+    width: auto;
+  }
+  #Home .container-home .images-back, #Home .result-home .images-back {
+    height: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #Home .container-home .images-back .images-button, #Home .result-home .images-back .images-button {
+    display: flex;
+    flex-direction: column;
+    width: 165px;
+    margin-bottom: 20px;
+  }
+  #Home .container-home .images-back .images-button #button-back, #Home .result-home .images-back .images-button #button-back {
+    background-color: #a9d6ec;
+  }
+  #Home .container-home .images-back .images-button #button-back:hover, #Home .result-home .images-back .images-button #button-back:hover {
+    background-color: #00c3ff;
+  }
+  #Home .container-home .images-back .images-button #button-back-active, #Home .result-home .images-back .images-button #button-back-active {
+    background-color: #58a9ff;
+  }
+  #Home .container-home .images-back .images-button #environment, #Home .result-home .images-back .images-button #environment {
+    width: 140px;
+    margin: 5px;
+  }
+  #Home .container-home .kitty, #Home .result-home .kitty {
+    height: 110px;
+  }
+  #Timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  #Timer .timer-status {
+    width: 90%;
+  }
+  #Timer .timer-status h2 {
+    font-size: 60px;
+  }
+  #Timer .time h1 {
+    font-size: 230px;
+    -webkit-text-stroke: 5px #f2f2f2;
+  }
+  #Timer .ProgressBar {
+    width: 75%;
+  }
+  #backButton div {
+    border-radius: 50%;
+    border: #3172ff solid 3px;
+  }
+  #backButton div img {
+    width: 7vw;
+    padding-right: 4px;
+  }
+}
+@media (max-width: 590px) {
+  #Landing h1 {
+    font-size: 80px;
+    margin-bottom: 40px;
+  }
+  #Landing div {
+    width: auto;
+  }
+  #Landing div .clock {
+    z-index: 10;
+    height: 40vh;
+    transition: 1s;
+    position: relative;
+  }
+  #Landing div .pomoCat {
+    position: absolute;
+    height: 35vh;
+    margin: 20px 0px 0px -310px;
+    z-index: 0;
+    transition: 1s;
+    transform: rotate(0deg);
+  }
+  #Landing div:active .clock {
+    transform: scale(0.9);
+  }
+  #Landing div:active .pomoCat {
+    transform: scale(1);
+    margin: -150px 0px 0px -310px;
+  }
+  #Landing div:hover .clock {
+    transform: scale(0.9);
+  }
+  #Landing div:hover .pomoCat {
+    transform: scale(1) rotate(0deg);
+    margin: -150px 0px 0px -310px;
+  }
+  #Home .container-home, #Home .result-home {
+    width: 40vw;
+  }
+  #Home .container-home #divisores, #Home .result-home #divisores {
+    width: 80%;
+  }
+  #Home .container-home #divisores .config-Timer-time, #Home .result-home #divisores .config-Timer-time {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    display: flex;
+    justify-content: space-around;
+  }
+  #Home .container-home #divisores .config-Timer-time #time, #Home .result-home #divisores .config-Timer-time #time {
+    height: 45px;
+    font-size: 80%;
+    width: auto;
+  }
+  #Home .container-home #divisores .config-Timer-time #time-active, #Home .result-home #divisores .config-Timer-time #time-active {
+    height: 45px;
+    font-size: 70%;
+    width: auto;
+  }
+  #Home .container-home #divisores .config-Timer-sessions, #Home .result-home #divisores .config-Timer-sessions {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    row-gap: 5px;
+  }
+  #Home .container-home #divisores .config-Timer-sessions #Background, #Home .result-home #divisores .config-Timer-sessions #Background {
+    height: 45px;
+    font-size: 55%;
+    display: flex;
+    align-self: start;
+    width: auto;
+  }
+  #Home .container-home #divisores .config-Timer-sessions #Background-active, #Home .result-home #divisores .config-Timer-sessions #Background-active {
+    height: 45px;
+    font-size: 11px;
+    width: auto;
+  }
+  #Home .container-home #divisores .config-Timer-sessions #sessions, #Home .result-home #divisores .config-Timer-sessions #sessions {
+    height: 45px;
+    font-size: 55%;
+  }
+  #Home .container-home #divisores .config-Timer-sessions #sessions-active, #Home .result-home #divisores .config-Timer-sessions #sessions-active {
+    height: 45px;
+    font-size: 12px;
+    width: auto;
+  }
+  #Home .container-home .images-back, #Home .result-home .images-back {
+    height: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #Home .container-home .images-back .images-button, #Home .result-home .images-back .images-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 110%;
+    margin-bottom: 20px;
+  }
+  #Home .container-home .images-back .images-button #button-back, #Home .result-home .images-back .images-button #button-back {
+    background-color: #a9d6ec;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #Home .container-home .images-back .images-button #button-back:hover, #Home .result-home .images-back .images-button #button-back:hover {
+    background-color: #00c3ff;
+  }
+  #Home .container-home .images-back .images-button #button-back-active, #Home .result-home .images-back .images-button #button-back-active {
+    background-color: #58a9ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #Home .container-home .images-back .images-button #environment, #Home .result-home .images-back .images-button #environment {
+    width: 100%;
+  }
+  #Timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    gap: 30px;
+  }
+  #Timer .time {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+  }
+  #Timer .time h1 {
+    font-size: 700%;
+    -webkit-text-stroke: 5px #f2f2f2;
+  }
+  #Timer .timer-status {
+    width: 90%;
+    margin-bottom: 5vh;
+  }
+  #Timer .timer-status h2 {
+    font-size: 50px;
+  }
+  #Timer .ProgressBar {
+    width: 80%;
+    margin-bottom: 8vh;
+  }
+  #Footer div h2 a {
+    font-size: 120%;
+  }
+  #Footer img {
+    width: 9vw;
+  }
+  #backButton div {
+    border-radius: 50%;
+    border: #3172ff solid 3px;
+  }
+  #backButton div img {
+    width: 7vw;
+    padding-right: 4px;
+  }
+}
+@media (max-height: 500px) {
   #Landing h1 {
     font-size: 80px;
     margin-bottom: 40px;
@@ -451,7 +761,6 @@
   #Home .container-home .images-back, #Home .result-home .images-back {
     height: auto;
     width: 80%;
-    border: solid 1px #000;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -477,7 +786,7 @@
     margin: 5px;
   }
   #Home .container-home .kitty, #Home .result-home .kitty {
-    height: 150px;
+    height: 110px;
   }
   #Timer {
     display: flex;

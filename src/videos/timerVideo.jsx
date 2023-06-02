@@ -1,6 +1,4 @@
 import { useSelector } from "react-redux";
-import { effectSound } from "../audios/sound";
-import { useEffect } from "react";
 
 export const VideoTimer =() => {
   const {selected} = useSelector((state) => state)
