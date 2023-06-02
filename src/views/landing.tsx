@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
 import Pomo from '../img/pomo.png';
 import Reloj from '../img/Clock.png';
 import { Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
-
-
 
 function Landing() {
-    const { selected } = useSelector((state: any) => state)
-
-    
     return(
         <div id='Landing'>
             <h1>Study With Pomo</h1>
