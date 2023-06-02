@@ -410,6 +410,7 @@ div:hover{
   }
 }
 
+/* ---------------------------- VERTICAL ---------------------------- */
 @media (min-width: 600px) and (max-width: 1024px){
   #Landing{
     h1{
@@ -689,9 +690,6 @@ div:hover{
           }
         }
       }
-      .kitty{
-        
-      }
     }
 
     
@@ -747,7 +745,9 @@ div:hover{
   }
 }
 
-@media (max-height: 500px){
+/* --------------------------- HORIZONTAL --------------------------- */
+
+@media (max-height: 450px) and (max-width: 1024px){
   #Landing{
     h1{
       font-size: 80px;
@@ -762,7 +762,7 @@ div:hover{
       }
       .pomoCat{
         position: absolute;
-        margin: 50px 0px 0px -420px;
+        margin: 20px 0px 0px -200px;
         z-index: 0;
         height: 40vh;
         transition: 1s;
@@ -775,7 +775,16 @@ div:hover{
       }
       .pomoCat{
         transform: scale(1);
-        margin: -150px 0px 0px -420px;
+        margin: -90px 0px 0px -200px;
+      }
+    }
+    div:hover{
+      .clock{
+        transform: scale(0.9);
+      }
+      .pomoCat{
+        transform: scale(1) rotate(0deg);
+        margin: -90px 0px 0px -200px;
       }
     }
     
@@ -786,38 +795,45 @@ div:hover{
       width: 40vw;
       #divisores{
         width: 80%;
+        height: 20%;
         .config-Timer-time{
           #time{
-            height: 45px;
-            font-size: 20px;
+            height: 30px;
+            font-size: 15px;
             width: auto;
+            margin-bottom: 5%;
           }
           #time-active{
-            height: 45px;
-            font-size: 20px;
+            height: 30px;
+            font-size: 15px;
             width: auto;
+            margin-bottom: 5%;
           }
       }
       .config-Timer-sessions{
         #Background{
-          height: 45px;
+          height: 30px;
           font-size: 15px;
           width: auto;
+          margin-bottom: 5%;
         }
         #Background-active{
-          height: 45px;
+          height: 30px;
           font-size: 15px;
           width: auto;
+          margin-bottom: 5%;
         }
         #sessions{
-          height: 45px;
+          height: 30px;
           font-size: 15px;
           width: auto;
+          margin-bottom: 5%;
         }
           #sessions-active{
-            height: 45px;
+            height: 30px;
             font-size: 15px;
             width: auto;
+            margin-bottom: 5%;
           }
         };
   
@@ -828,12 +844,13 @@ div:hover{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        align-items: center;
+        align-items: start;
+        margin-right: 10px;
         .images-button{
-          display: flex;
-          flex-direction: column;
-          width: 165px;
-          margin-bottom: 20px;
+          display: grid;
+          grid-template-rows: 45% 45%;
+          grid-template-columns: 80% 80%;
+          grid-gap: 10px;
           #button-back{
             background-color: $firstColor;
           }
@@ -844,13 +861,13 @@ div:hover{
             background-color: #58a9ff;
           }
           #environment{
-            width: 140px;
+            width: 95%;
             margin: 5px;
           }
         }
       }
       .kitty{
-        height: 110px;
+        height: 20%;
       }
     }
 
@@ -858,24 +875,72 @@ div:hover{
   }
 
   #Timer{
-  @include flexibility(column, center, center);
-  gap: 30px;
-  .timer-status{
-    width: 90%;
-    h2{
-      font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .buttons-timer{
+      position: absolute;
+      top: 10px;
+      background-color: #27beff7f;
+      border-radius: 50%;
+      height: 100px;
+      img{
+        width: 100px;
+        transition: 0.3s;
+      }
+      img:hover{
+        cursor: pointer;
+      }
+      img:active{
+        transform: scale(0.8);
+      }
     }
-  }
-  .time{
-    h1{
-      font-size: 300px;
-      -webkit-text-stroke: 5px $white;
-    }
-  }
-    .ProgressBar{
-    width: 75%;
-  }
+    @include flexibility(column, center, center);
+    gap: 0px;
+    .time{
+      margin-top: 50px;
+      width: 80%;
+      display: flex;
+      justify-content: center;
   
+      h1{
+        font-size: 160px;
+        -webkit-text-stroke: 5px $white;
+      }
+    }
+    .timer-status{
+      width: 90%;
+      h2{
+        font-size: 50px;
+      }
+    }
+      .ProgressBar{
+      width: 80%;
+      margin-bottom: 5vh;
+    }
+    
+    }
+
+  #Footer{
+    height: 5%;
+    #social{
+      a{
+        margin: 0 10px 0 10px;
+      }
+    }
+    div{
+      margin: 0 5px;
+      h2{
+        font-size: 15px;
+        a{
+          font-size: 20px;
+          -webkit-text-stroke: 0.7px $white;
+        }
+      }
+    }
+    img{
+      width: 25px;
+    }
   }
   
 }

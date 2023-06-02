@@ -405,6 +405,7 @@
   background: linear-gradient(#3b9aff, #33cfff);
 }
 
+/* ---------------------------- VERTICAL ---------------------------- */
 @media (min-width: 600px) and (max-width: 1024px) {
   #Landing h1 {
     font-size: 80px;
@@ -694,7 +695,8 @@
     padding-right: 4px;
   }
 }
-@media (max-height: 500px) {
+/* --------------------------- HORIZONTAL --------------------------- */
+@media (max-height: 450px) and (max-width: 1024px) {
   #Landing h1 {
     font-size: 80px;
     margin-bottom: 40px;
@@ -709,7 +711,7 @@
   }
   #Landing div .pomoCat {
     position: absolute;
-    margin: 50px 0px 0px -420px;
+    margin: 20px 0px 0px -200px;
     z-index: 0;
     height: 40vh;
     transition: 1s;
@@ -720,43 +722,57 @@
   }
   #Landing div:active .pomoCat {
     transform: scale(1);
-    margin: -150px 0px 0px -420px;
+    margin: -90px 0px 0px -200px;
+  }
+  #Landing div:hover .clock {
+    transform: scale(0.9);
+  }
+  #Landing div:hover .pomoCat {
+    transform: scale(1) rotate(0deg);
+    margin: -90px 0px 0px -200px;
   }
   #Home .container-home, #Home .result-home {
     width: 40vw;
   }
   #Home .container-home #divisores, #Home .result-home #divisores {
     width: 80%;
+    height: 20%;
   }
   #Home .container-home #divisores .config-Timer-time #time, #Home .result-home #divisores .config-Timer-time #time {
-    height: 45px;
-    font-size: 20px;
+    height: 30px;
+    font-size: 15px;
     width: auto;
+    margin-bottom: 5%;
   }
   #Home .container-home #divisores .config-Timer-time #time-active, #Home .result-home #divisores .config-Timer-time #time-active {
-    height: 45px;
-    font-size: 20px;
+    height: 30px;
+    font-size: 15px;
     width: auto;
+    margin-bottom: 5%;
   }
   #Home .container-home #divisores .config-Timer-sessions #Background, #Home .result-home #divisores .config-Timer-sessions #Background {
-    height: 45px;
+    height: 30px;
     font-size: 15px;
     width: auto;
+    margin-bottom: 5%;
   }
   #Home .container-home #divisores .config-Timer-sessions #Background-active, #Home .result-home #divisores .config-Timer-sessions #Background-active {
-    height: 45px;
+    height: 30px;
     font-size: 15px;
     width: auto;
+    margin-bottom: 5%;
   }
   #Home .container-home #divisores .config-Timer-sessions #sessions, #Home .result-home #divisores .config-Timer-sessions #sessions {
-    height: 45px;
+    height: 30px;
     font-size: 15px;
     width: auto;
+    margin-bottom: 5%;
   }
   #Home .container-home #divisores .config-Timer-sessions #sessions-active, #Home .result-home #divisores .config-Timer-sessions #sessions-active {
-    height: 45px;
+    height: 30px;
     font-size: 15px;
     width: auto;
+    margin-bottom: 5%;
   }
   #Home .container-home .images-back, #Home .result-home .images-back {
     height: auto;
@@ -764,13 +780,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: start;
+    margin-right: 10px;
   }
   #Home .container-home .images-back .images-button, #Home .result-home .images-back .images-button {
-    display: flex;
-    flex-direction: column;
-    width: 165px;
-    margin-bottom: 20px;
+    display: grid;
+    grid-template-rows: 45% 45%;
+    grid-template-columns: 80% 80%;
+    grid-gap: 10px;
   }
   #Home .container-home .images-back .images-button #button-back, #Home .result-home .images-back .images-button #button-back {
     background-color: #a9d6ec;
@@ -782,30 +799,76 @@
     background-color: #58a9ff;
   }
   #Home .container-home .images-back .images-button #environment, #Home .result-home .images-back .images-button #environment {
-    width: 140px;
+    width: 95%;
     margin: 5px;
   }
   #Home .container-home .kitty, #Home .result-home .kitty {
-    height: 110px;
+    height: 20%;
   }
   #Timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 0px;
+  }
+  #Timer .buttons-timer {
+    position: absolute;
+    top: 10px;
+    background-color: rgba(39, 190, 255, 0.4980392157);
+    border-radius: 50%;
+    height: 100px;
+  }
+  #Timer .buttons-timer img {
+    width: 100px;
+    transition: 0.3s;
+  }
+  #Timer .buttons-timer img:hover {
+    cursor: pointer;
+  }
+  #Timer .buttons-timer img:active {
+    transform: scale(0.8);
+  }
+  #Timer .time {
+    margin-top: 50px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+  }
+  #Timer .time h1 {
+    font-size: 160px;
+    -webkit-text-stroke: 5px #f2f2f2;
   }
   #Timer .timer-status {
     width: 90%;
   }
   #Timer .timer-status h2 {
-    font-size: 60px;
-  }
-  #Timer .time h1 {
-    font-size: 300px;
-    -webkit-text-stroke: 5px #f2f2f2;
+    font-size: 50px;
   }
   #Timer .ProgressBar {
-    width: 75%;
+    width: 80%;
+    margin-bottom: 5vh;
+  }
+  #Footer {
+    height: 5%;
+  }
+  #Footer #social a {
+    margin: 0 10px 0 10px;
+  }
+  #Footer div {
+    margin: 0 5px;
+  }
+  #Footer div h2 {
+    font-size: 15px;
+  }
+  #Footer div h2 a {
+    font-size: 20px;
+    -webkit-text-stroke: 0.7px #f2f2f2;
+  }
+  #Footer img {
+    width: 25px;
   }
 }/*# sourceMappingURL=App.css.map */
