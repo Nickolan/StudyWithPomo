@@ -759,13 +759,14 @@ div:hover{
         z-index: 10;
         transition: 1s;
         position: relative;
+        bottom: 30px;
       }
       .pomoCat{
         position: absolute;
-        margin: 20px 0px 0px -200px;
+        margin: 20px 0px 0px -190px;
         z-index: 0;
         height: 40vh;
-        transition: 1s;
+        transition: 1.5s;
         transform: rotate(0deg);
       }
     }
@@ -775,7 +776,7 @@ div:hover{
       }
       .pomoCat{
         transform: scale(1);
-        margin: -90px 0px 0px -200px;
+        margin: -100px 0px 0px -185px;
       }
     }
     div:hover{
@@ -784,7 +785,7 @@ div:hover{
       }
       .pomoCat{
         transform: scale(1) rotate(0deg);
-        margin: -90px 0px 0px -200px;
+        margin: -100px 0px 0px -185px;
       }
     }
     
@@ -880,12 +881,13 @@ div:hover{
     align-items: center;
     .buttons-timer{
       position: absolute;
-      top: 10px;
+      top: 5px;
+      right: 5px;
       background-color: #27beff7f;
       border-radius: 50%;
-      height: 100px;
+      height: 80px;
       img{
-        width: 100px;
+        width: 80px;
         transition: 0.3s;
       }
       img:hover{
@@ -898,7 +900,7 @@ div:hover{
     @include flexibility(column, center, center);
     gap: 0px;
     .time{
-      margin-top: 50px;
+      margin-top: 10px;
       width: 80%;
       display: flex;
       justify-content: center;
@@ -923,6 +925,7 @@ div:hover{
 
   #Footer{
     height: 5%;
+    bottom: 4px;
     #social{
       a{
         margin: 0 10px 0 10px;

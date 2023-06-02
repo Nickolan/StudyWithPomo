@@ -708,13 +708,14 @@
     z-index: 10;
     transition: 1s;
     position: relative;
+    bottom: 30px;
   }
   #Landing div .pomoCat {
     position: absolute;
-    margin: 20px 0px 0px -200px;
+    margin: 20px 0px 0px -190px;
     z-index: 0;
     height: 40vh;
-    transition: 1s;
+    transition: 1.5s;
     transform: rotate(0deg);
   }
   #Landing div:active .clock {
@@ -722,14 +723,14 @@
   }
   #Landing div:active .pomoCat {
     transform: scale(1);
-    margin: -90px 0px 0px -200px;
+    margin: -100px 0px 0px -185px;
   }
   #Landing div:hover .clock {
     transform: scale(0.9);
   }
   #Landing div:hover .pomoCat {
     transform: scale(1) rotate(0deg);
-    margin: -90px 0px 0px -200px;
+    margin: -100px 0px 0px -185px;
   }
   #Home .container-home, #Home .result-home {
     width: 40vw;
@@ -817,13 +818,14 @@
   }
   #Timer .buttons-timer {
     position: absolute;
-    top: 10px;
+    top: 5px;
+    right: 5px;
     background-color: rgba(39, 190, 255, 0.4980392157);
     border-radius: 50%;
-    height: 100px;
+    height: 80px;
   }
   #Timer .buttons-timer img {
-    width: 100px;
+    width: 80px;
     transition: 0.3s;
   }
   #Timer .buttons-timer img:hover {
@@ -833,7 +835,7 @@
     transform: scale(0.8);
   }
   #Timer .time {
-    margin-top: 50px;
+    margin-top: 10px;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -854,6 +856,7 @@
   }
   #Footer {
     height: 5%;
+    bottom: 4px;
   }
   #Footer #social a {
     margin: 0 10px 0 10px;
