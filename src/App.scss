@@ -750,8 +750,8 @@ div:hover{
 @media (max-height: 450px) and (max-width: 1024px){
   #Landing{
     h1{
-      font-size: 80px;
-      margin-bottom: 40px;
+      font-size: 70px;
+      margin-bottom: 30px;
     }
     div{
       width: auto;
@@ -759,11 +759,11 @@ div:hover{
         z-index: 10;
         transition: 1s;
         position: relative;
-        bottom: 30px;
+        bottom: 18vh;
       }
       .pomoCat{
         position: absolute;
-        margin: 20px 0px 0px -190px;
+        margin: -60px 0px 0px -140px;
         z-index: 0;
         height: 40vh;
         transition: 1.5s;
@@ -776,7 +776,7 @@ div:hover{
       }
       .pomoCat{
         transform: scale(1);
-        margin: -100px 0px 0px -185px;
+        margin: -115px 0px 0px -140px;
       }
     }
     div:hover{
@@ -785,7 +785,7 @@ div:hover{
       }
       .pomoCat{
         transform: scale(1) rotate(0deg);
-        margin: -100px 0px 0px -185px;
+        margin: -115px 0px 0px -140px;
       }
     }
     
